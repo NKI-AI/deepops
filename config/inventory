@@ -9,8 +9,8 @@
 # NOTE: Use existing hostnames here, DeepOps will configure server hostnames to match these values
 ######
 [all]
-tslurm             ansible_host=192.168.200.121
-aristarchus        ansible_host=192.168.200.117
+tslurm             ansible_host=tslurm.rhpc.nki.nl
+aristarchus        ansible_host=aristarchus.rhpc.nki.nl
 
 
 ######
