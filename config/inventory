@@ -1,0 +1,38 @@
+#
+# Server Inventory File
+#
+# Uncomment and change the IP addresses in this file to match your environment
+# Define per-group or per-host configuration in group_vars/*.yml
+
+######
+# ALL NODES
+# NOTE: Use existing hostnames here, DeepOps will configure server hostnames to match these values
+######
+[all]
+tslurm             ansible_host=192.168.200.121
+aristarchus        ansible_host=192.168.200.117
+
+
+######
+# SLURM
+######
+[slurm-master]
+tslurm
+
+[slurm-node]
+aristarchus
+
+[slurm-cluster:children]
+slurm-master
+slurm-node
+
+
+######
+# SSH connection configuration
+######
+[all:vars]
+# SSH User
+#ansible_user=ubuntu
+#ansible_ssh_private_key_file='~/.ssh/id_rsa'
+# SSH bastion/jumpbox
+#ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q ubuntu@10.0.0.1"'

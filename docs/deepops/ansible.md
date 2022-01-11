@@ -79,7 +79,7 @@ _Create server inventory_
 ```sh
 # Copy the default configuration
 # This should be in the deepops directory and will be done automatically by setup.sh
-cp -r config.example config
+cp -r config config
 
 # Review and edit the inventory file to set IPs/hostnames for servers
 cat config/inventory
