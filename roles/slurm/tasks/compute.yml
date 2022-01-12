@@ -127,25 +127,35 @@
     enabled: yes
     daemon-reload: yes
 
-- name: install /etc/localusers
+- name: install /etc/login.user.allowed
   template:
-    src: etc/localusers
+    src: etc/login.user.allowed
     dest: "{{ item }}"
     mode: 0600
   with_items:
-    - "{{ slurm_config_dir }}/localusers.backup"
-    - /etc/localusers
+    - "{{ slurm_config_dir }}/login.user.allowed.backup"
+    - /etc/login.user.allowed
   tags:
-    - localusers
+    - login.user.allowed
+
+- name: install /etc/login.group.allowed
+  template:
+    src: etc/login.group.allowed
+    dest: "{{ item }}"
+    mode: 0600
+  with_items:
+    - "{{ slurm_config_dir }}/login.group.allowed.backup"
+    - /etc/login.group.allowed
+  tags:
+    - login.group.allowed
 
 - name: setup /etc/pam.d/sshd
   blockinfile:
     path: /etc/pam.d/sshd
     block: |
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so action_no_jobs=ignore
-      -account sufficient pam_listfile.so item=user sense=allow file=/etc/localusers
-#      This can be used to make SUDO LOGIN!!
-#      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.group.allowed
+      -account sufficient pam_listfile.so item=user sense=allow file=/etc/login.user.allowed
+      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.group.allowed
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so
     insertafter: EOF
     marker: "# {mark} ANSIBLE MANAGED BLOCK (ansible-role-slurm)"

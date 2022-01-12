@@ -44,7 +44,7 @@
 # Useful for slurm clusters
 - name: grant SSH access to temporary user
   lineinfile:
-    path: /etc/localusers
+    path: /etc/login.user.allowed
     line: "{{ tmp_user }}"
     create: yes
 
@@ -59,7 +59,7 @@
 
 - name: revoke SSH access from temporary user
   lineinfile:
-    path: /etc/localusers
+    path: /etc/login.user.allowed
     line: "{{ tmp_user }}"
     state: absent
 

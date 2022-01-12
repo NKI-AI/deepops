@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
-if grep -q -w "$SLURM_JOB_USER" /etc/slurm/localusers.backup ; then
+if grep -q -w "$SLURM_JOB_USER" /etc/slurm/local.user.allowed.backup ; then
     exit 0  # don't revoke access for these users
 fi
 
-sed -i "/${SLURM_JOB_USER}/d" /etc/localusers
+sed -i "/${SLURM_JOB_USER}/d" /etc/local.user.allowed
