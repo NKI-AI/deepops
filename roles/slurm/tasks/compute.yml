@@ -19,9 +19,10 @@
 
 - name: add cgroups to grub options
   lineinfile:
+    # Slurm does not yet support cgroups v2.
     dest: /etc/default/grub
     insertafter: '^GRUB_CMDLINE_LINUX=[^\\$]'
-    line: 'GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} cgroup_enable=memory swapaccount=1"'
+    line: 'GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false cgroup_enable=memory swapaccount=1"'
   register: update_grub
 
 - name: update grub
@@ -143,6 +144,8 @@
     block: |
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so action_no_jobs=ignore
       -account sufficient pam_listfile.so item=user sense=allow file=/etc/localusers
+#      This can be used to make SUDO LOGIN!!
+#      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.group.allowed
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so
     insertafter: EOF
     marker: "# {mark} ANSIBLE MANAGED BLOCK (ansible-role-slurm)"
