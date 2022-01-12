@@ -9,9 +9,30 @@
 # NOTE: Use existing hostnames here, DeepOps will configure server hostnames to match these values
 ######
 [all]
-tslurm             ansible_host=tslurm.rhpc.nki.nl
-aristarchus        ansible_host=aristarchus.rhpc.nki.nl
+aristarchus        ansible_host=rhpc-aristarchus
+tslurm ansible_host=rhpc-tslurm
+######
+# KUBERNETES
+######
+[kube-master]
+#mgmt01
+#mgmt02
+#mgmt03
 
+# Odd number of nodes required
+[etcd]
+#mgmt01
+#mgmt02
+#mgmt03
+
+# Also add mgmt/master nodes here if they will run non-control plane jobs
+[kube-node]
+#gpu01
+#gpu02
+
+[k8s-cluster:children]
+#kube-master
+#kube-node
 
 ######
 # SLURM

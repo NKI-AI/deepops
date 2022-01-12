@@ -1,12 +1,15 @@
 ---
 # Slurm Cluster Playbook
+#- name: sdtest
+#  command: sudo echo he,
+#  register: mysudo
 
 # Install python required for Ansible
 - include: bootstrap/bootstrap-python.yml
 
 # Set up passwordless sudo and SSH keys if needed
-- include: bootstrap/bootstrap-ssh.yml
-- include: bootstrap/bootstrap-sudo.yml
+#- include: bootstrap/bootstrap-ssh.yml
+#- include: bootstrap/bootstrap-sudo.yml
 
 # Disable cloud-init
 - include: generic/disable-cloud-init.yml
@@ -52,14 +55,14 @@
 - include: generic/software.yml
 
 # Set up NFS filesystem
-- include: generic/nfs-server.yml
-  vars:
-    hostlist: "{{ nfs_server_group | default('slurm-master[0]') }}"
-  when: slurm_enable_nfs_server
-- include: generic/nfs-client.yml
-  vars:
-    hostlist: "{{ nfs_client_group | default('slurm-master[1:],slurm-node') }}"
-  when: slurm_enable_nfs_client_nodes
+#- include: generic/nfs-server.yml
+#  vars:
+#    hostlist: "{{ nfs_server_group | default('slurm-master[0]') }}"
+#  when: slurm_enable_nfs_server
+#- include: generic/nfs-client.yml
+#  vars:
+#    hostlist: "{{ nfs_client_group | default('slurm-master[1:],slurm-node') }}"
+#  when: slurm_enable_nfs_client_nodes
 
 # Install DCGM
 - include: nvidia-software/nvidia-dcgm.yml hostlist=slurm-node
@@ -117,8 +120,8 @@
   when: slurm_enable_rsyslog_client|default(true)
 
 # Install Singularity
-- include: container/singularity.yml
-  when: slurm_cluster_install_singularity|default(true)
+#- include: container/singularity.yml
+#  when: slurm_cluster_install_singularity|default(true)
 
 # Install Open OnDemand
 - include: slurm-cluster/open-ondemand.yml
@@ -129,12 +132,12 @@
   when: allow_user_set_gpu_clocks
 
 # Install Enroot and Pyxis
-- include: container/pyxis.yml
-  when:
-    - slurm_install_enroot
-    - slurm_install_pyxis
-  tags:
-    - pyxis
+#- include: container/pyxis.yml
+#  when:
+#    - slurm_install_enroot
+#    - slurm_install_pyxis
+#  tags:
+#    - pyxis
 
 # Ensure that nv_peer_mem is loaded
 - include: nvidia-software/nvidia-peer-memory.yml
