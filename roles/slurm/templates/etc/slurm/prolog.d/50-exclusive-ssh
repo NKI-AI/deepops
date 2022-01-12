@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
-cp /etc/slurm/local.user.allowed.backup /etc/local.user.allowed
+cp /etc/slurm/login.local.user.allowed.backup /etc/login.local.user.allowed
 
-if ! grep -q -w "$SLURM_JOB_USER" /etc/slurm/local.user.allowed.backup ; then
-    echo "$SLURM_JOB_USER" >>/etc/local.user.allowed
+if ! grep -q -w "$SLURM_JOB_USER" /etc/slurm/login.local.user.allowed.backup ; then
+    echo "$SLURM_JOB_USER" >>/etc/login.local.user.allowed
 fi

@@ -127,35 +127,35 @@
     enabled: yes
     daemon-reload: yes
 
-- name: install /etc/login.user.allowed
+- name: install /etc/login.local.user.allowed
   template:
-    src: etc/login.user.allowed
+    src: etc/login.local.user.allowed
     dest: "{{ item }}"
     mode: 0600
   with_items:
-    - "{{ slurm_config_dir }}/login.user.allowed.backup"
-    - /etc/login.user.allowed
+    - "{{ slurm_config_dir }}/login.local.user.allowed.backup"
+    - /etc/login.local.user.allowed
   tags:
-    - login.user.allowed
+    - login.local.user.allowed
 
-- name: install /etc/login.group.allowed
+- name: install /etc/login.local.group.allowed
   template:
-    src: etc/login.group.allowed
+    src: etc/login.local.group.allowed
     dest: "{{ item }}"
     mode: 0600
   with_items:
-    - "{{ slurm_config_dir }}/login.group.allowed.backup"
-    - /etc/login.group.allowed
+    - "{{ slurm_config_dir }}/login.local.group.allowed.backup"
+    - /etc/login.local.group.allowed
   tags:
-    - login.group.allowed
+    - login.local.group.allowed
 
 - name: setup /etc/pam.d/sshd
   blockinfile:
     path: /etc/pam.d/sshd
     block: |
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so action_no_jobs=ignore
-      -account sufficient pam_listfile.so item=user sense=allow file=/etc/login.user.allowed
-      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.group.allowed
+      -account sufficient pam_listfile.so item=user sense=allow file=/etc/login.local.user.allowed
+      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.local.group.allowed
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so
     insertafter: EOF
     marker: "# {mark} ANSIBLE MANAGED BLOCK (ansible-role-slurm)"

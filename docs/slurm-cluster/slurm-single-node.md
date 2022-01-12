@@ -110,8 +110,8 @@ The supported Operating Systems are Ubuntu (version 18 and 20), CentOS and RHEL
     The `slurm_login_on_compute` setting is to enable special settings on a
     compute node in order that it can function as a login node as well.
 
-    Note: After deployment new users have to be manually added to “/etc/login.user.allowed”
-    and “/etc/slurm/login.user.allowed.backup” on the node that functions as a login node.
+    Note: After deployment new users have to be manually added to “/etc/login.local.user.allowed”
+    and “/etc/slurm/login.local.user.allowed.backup” on the node that functions as a login node.
 
 4. Verify the configuration.
 

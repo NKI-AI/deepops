@@ -120,8 +120,8 @@
   when: slurm_enable_rsyslog_client|default(true)
 
 # Install Singularity
-#- include: container/singularity.yml
-#  when: slurm_cluster_install_singularity|default(true)
+- include: container/singularity.yml
+  when: slurm_cluster_install_singularity|default(true)
 
 # Install Open OnDemand
 - include: slurm-cluster/open-ondemand.yml
@@ -132,12 +132,12 @@
   when: allow_user_set_gpu_clocks
 
 # Install Enroot and Pyxis
-#- include: container/pyxis.yml
-#  when:
-#    - slurm_install_enroot
-#    - slurm_install_pyxis
-#  tags:
-#    - pyxis
+- include: container/pyxis.yml
+  when:
+    - slurm_install_enroot
+    - slurm_install_pyxis
+  tags:
+    - pyxis
 
 # Ensure that nv_peer_mem is loaded
 - include: nvidia-software/nvidia-peer-memory.yml

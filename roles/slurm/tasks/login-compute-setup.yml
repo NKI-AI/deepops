@@ -20,7 +20,7 @@
     path: /etc/slurm/epilog.d/40-lastuserjob-processes
     block: |
 
-      if grep -q -w "$SLURM_JOB_USER" /etc/slurm/login.user.allowed.backup ; then
+      if grep -q -w "$SLURM_JOB_USER" /etc/slurm/login.local.user.allowed.backup ; then
           exit 0  # don't revoke access for these users
       fi
 

@@ -9,8 +9,9 @@
 # NOTE: Use existing hostnames here, DeepOps will configure server hostnames to match these values
 ######
 [all]
-aristarchus        ansible_host=rhpc-aristarchus
-tslurm ansible_host=rhpc-tslurm
+aristarchus         ansible_host=rhpc-aristarchus
+tslurm              ansible_host=rhpc-tslurm
+
 ######
 # KUBERNETES
 ######

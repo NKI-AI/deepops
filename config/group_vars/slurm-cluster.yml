@@ -86,7 +86,7 @@ nfs_client_group: "slurm-master[1:],slurm-node"
 # SOFTWARE MODULES (SM)                                                        #
 #   May be built with either EasyBuild or Spack                                #
 ################################################################################
-slurm_install_lmod: false
+slurm_install_lmod: true
 
 # Note: the sm_prefix must be in an NFS-shared location
 sm_prefix: "/sw"
@@ -135,7 +135,7 @@ hpcsdk_install_in_path: false
 # using the OpenMPI provided in the HPC SDK, but if you need a custom build,   #
 # this can help you get started.
 ################################################################################
-slurm_cluster_install_openmpi: false
+slurm_cluster_install_openmpi: no
 openmpi_version: 4.0.4
 openmpi_install_prefix: "/usr/local"
 openmpi_configure: "./configure --prefix={{ openmpi_install_prefix }} --disable-dependency-tracking --disable-getpwuid --with-pmix={{ pmix_install_prefix }} --with-hwloc={{ hwloc_install_prefix }} --with-pmi={{ slurm_install_prefix }} --with-slurm={{ slurm_install_prefix }} --with-libevent=/usr"
@@ -163,8 +163,8 @@ allow_user_set_gpu_clocks: no
 ################################################################################
 # Enroot & Pyxis                                                               #
 ################################################################################
-slurm_install_enroot: true
-slurm_install_pyxis: true
+slurm_install_enroot: no
+slurm_install_pyxis: no
 slurm_pyxis_version: 0.11.1
 
 ################################################################################
@@ -194,7 +194,7 @@ docker_registry_mirrors: "{{ groups['slurm-master'] | map('regex_replace', '^(.*
 ################################################################################
 # Monitoring stack                                                             #
 ################################################################################
-slurm_enable_monitoring: false
+slurm_enable_monitoring: true
 
 # Inventory host groups where cluster monitoring services will be installed
 # (Prometheus, Grafana, etc)
@@ -203,8 +203,8 @@ slurm_monitoring_group: "slurm-master"
 ################################################################################
 # Logging with rsyslog                                                         #
 ################################################################################
-slurm_enable_rsyslog_server: false
-slurm_enable_rsyslog_client: false
+slurm_enable_rsyslog_server: true
+slurm_enable_rsyslog_client: true
 rsyslog_server_hostname: "{{ groups['slurm-master'][0] }}"
 rsyslog_client_tcp_host: "{{ rsyslog_server_hostname }}"
 rsyslog_client_group: "slurm-cluster"
