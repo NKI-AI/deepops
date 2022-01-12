@@ -14,7 +14,8 @@ slurm_manage_gpus: true
 slurm_password: ReplaceWithASecurePasswordInTheVault
 #slurm_db_username: slurm
 slurm_db_password: AlsoReplaceWithASecurePasswordInTheVault
-#slurm_max_job_timelimit: INFINITE
+# INFINITE = forever
+slurm_max_job_timelimit: 10080
 #slurm_default_job_timelimit:
 
 # Ensure hosts file generation only runs across slurm cluster
@@ -40,6 +41,7 @@ slurm_ha_state_save_location: "/sw/slurm"
 # Login on compute
 ################################################################################
 slurm_allow_ssh_user: []
+# TODO: allow groups here
 slurm_login_on_compute: false
 
 ################################################################################
@@ -49,7 +51,7 @@ slurm_configure_etc_hosts: yes
 dns_mode: none
 slurm_cluster_install_cuda: no
 slurm_cluster_install_nvidia_driver: no
-slurm_cluster_install_singularity: no
+slurm_cluster_install_singularity: yes
 
 ################################################################################
 # NFS                                                                          #
@@ -194,7 +196,7 @@ docker_registry_mirrors: "{{ groups['slurm-master'] | map('regex_replace', '^(.*
 ################################################################################
 # Monitoring stack                                                             #
 ################################################################################
-slurm_enable_monitoring: true
+slurm_enable_monitoring: false
 
 # Inventory host groups where cluster monitoring services will be installed
 # (Prometheus, Grafana, etc)
