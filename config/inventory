@@ -41,6 +41,10 @@ tslurm              ansible_host=rhpc-tslurm
 [slurm-master]
 tslurm
 
+[slurm-metric]
+tslurm
+
+
 [slurm-node]
 aristarchus
 

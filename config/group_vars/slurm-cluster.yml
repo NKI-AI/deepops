@@ -165,8 +165,8 @@ allow_user_set_gpu_clocks: no
 ################################################################################
 # Enroot & Pyxis                                                               #
 ################################################################################
-slurm_install_enroot: no
-slurm_install_pyxis: no
+slurm_install_enroot: yes
+slurm_install_pyxis: yes
 slurm_pyxis_version: 0.11.1
 
 ################################################################################
@@ -196,7 +196,7 @@ docker_registry_mirrors: "{{ groups['slurm-master'] | map('regex_replace', '^(.*
 ################################################################################
 # Monitoring stack                                                             #
 ################################################################################
-slurm_enable_monitoring: false
+slurm_enable_monitoring: yes
 
 # Inventory host groups where cluster monitoring services will be installed
 # (Prometheus, Grafana, etc)
