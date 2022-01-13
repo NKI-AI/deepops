@@ -10,7 +10,7 @@
 ######
 [all]
 aristarchus         ansible_host=rhpc-aristarchus
-tslurm              ansible_host=rhpc-tslurm
+atlas              ansible_host=rhpc-atlas
 
 ######
 # KUBERNETES
@@ -39,10 +39,10 @@ tslurm              ansible_host=rhpc-tslurm
 # SLURM
 ######
 [slurm-master]
-tslurm
+atlas
 
 [slurm-metric]
-tslurm
+atlas
 
 
 [slurm-node]

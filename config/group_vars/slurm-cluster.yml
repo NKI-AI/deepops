@@ -5,11 +5,11 @@
 # Playbook: slurm, slurm-cluster, slurm-perf, slurm-perf-cluster, slurm-validation
 slurm_version: 21.08.1
 slurm_install_prefix: /usr/local
-pmix_install_prefix: /opt/deepops/pmix
-hwloc_install_prefix: /opt/deepops/hwloc
+pmix_install_prefix: /opt/kosmos-cluster/pmix
+hwloc_install_prefix: /opt/kosmos-cluster/hwloc
 #slurm_user_home: /local/slurm
 slurm_manage_gpus: true
-#slurm_cluster_name: deepops
+slurm_cluster_name: kosmos
 #slurm_username: slurm
 slurm_password: ReplaceWithASecurePasswordInTheVault
 #slurm_db_username: slurm
