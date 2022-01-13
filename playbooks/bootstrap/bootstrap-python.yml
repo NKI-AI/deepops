@@ -16,6 +16,10 @@
       changed_when: output.stdout != ""
       when: proxy_env is defined
 
+    - name: create symlink to /usr/bin/python
+      raw: test -e /usr/bin/python || ln -s /usr/bin/python3 /usr/bin/python
+      register: output
+      changed_when: output.stdout != ""
 
 # Install necessary Python packages for future pip and setuptools requirements
 - hosts: all
