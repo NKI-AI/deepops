@@ -1,3 +1,0 @@
-[submodule "packer-maas"]
-	path = submodules/packer-maas
-	url = https://github.com/DeepOps/packer-maas.git

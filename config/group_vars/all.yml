@@ -271,7 +271,7 @@ install_dcgm: true
 #   echo bar
 #
 # DeepOps specific config
-deepops_dir: /opt/deepops
+deepops_dir: /opt/kosmos-cluster
 # Directory for python virtualenv
 # Roles: K8s GPU operator, GPU plugin, OpenShift/K8s
 deepops_venv: '{{ deepops_dir }}/venv'
