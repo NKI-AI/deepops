@@ -48,15 +48,16 @@ deepops_set_hostname: true
 ################################################################################
 # Extra software to install or remove
 # Playbook: software
-#software_extra_packages:
-#  - curl
-#  - git
-#  - rsync
-#  - screen
-#  - tmux
-#  - vim
-#  - wget
-#  - build-essential
+software_extra_packages:
+  - curl
+  - git
+  - rsync
+  - screen
+  - tmux
+  - nano
+  - vim
+  - wget
+  - build-essential
 #  - linux-tools-generic
 #  - "{{ 'linux-headers-' + ansible_kernel }}"
 #software_remove_packages:

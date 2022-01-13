@@ -200,6 +200,7 @@ slurm_enable_monitoring: yes
 
 # Inventory host groups where cluster monitoring services will be installed
 # (Prometheus, Grafana, etc)
+# This is not ok? Needs to be on slurm-metric
 slurm_monitoring_group: "slurm-master"
 
 ################################################################################
