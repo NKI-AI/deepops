@@ -22,7 +22,7 @@ slurm_default_job_timelimit: 60
 slurm_grace_time: 120
 
 # Default memory used per CPU
-slurm_def_mem_per_cpu: 4096
+slurm_def_mem_per_cpu: 3800
 
 # Ensure hosts file generation only runs across slurm cluster
 hosts_add_ansible_managed_hosts_groups: ["slurm-cluster"]

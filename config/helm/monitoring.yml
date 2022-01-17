@@ -53,7 +53,7 @@ alertmanager:
     nodePort: 30400
 
 grafana:
-  adminPassword: deepops
+  adminPassword: kosmos
   ingress:
     enabled: true
     annotations:
