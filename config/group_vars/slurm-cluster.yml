@@ -16,7 +16,13 @@ slurm_password: ReplaceWithASecurePasswordInTheVault
 slurm_db_password: AlsoReplaceWithASecurePasswordInTheVault
 # INFINITE = forever
 slurm_max_job_timelimit: 10080
-#slurm_default_job_timelimit:
+slurm_default_job_timelimit: 60
+
+# Grace time for partition in seconds at preemption
+slurm_grace_time: 120
+
+# Default memory used per CPU
+slurm_def_mem_per_cpu: 4096
 
 # Ensure hosts file generation only runs across slurm cluster
 hosts_add_ansible_managed_hosts_groups: ["slurm-cluster"]
@@ -189,7 +195,7 @@ slurm_health_check_program: "/usr/sbin/nhc"
 ################################################################################
 # Container registry                                                           #
 ################################################################################
-slurm_enable_container_registry: false
+slurm_enable_container_registry: true
 docker_insecure_registries: "{{ groups['slurm-master'] | map('regex_replace', '^(.*)$', '\\1:5000') | list + ['registry.local:31500'] }}"
 docker_registry_mirrors: "{{ groups['slurm-master'] | map('regex_replace', '^(.*)$', 'http://\\1:5000') | list }}"
 

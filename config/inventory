@@ -10,7 +10,9 @@
 ######
 [all]
 aristarchus         ansible_host=rhpc-aristarchus
-atlas              ansible_host=rhpc-atlas
+ptolemaeus          ansible_host=rhpc-ptolemaeus
+atlas               ansible_host=rhpc-atlas
+
 
 ######
 # KUBERNETES
@@ -47,6 +49,7 @@ atlas
 
 [slurm-node]
 aristarchus
+ptolemaeus
 
 [slurm-cluster:children]
 slurm-master
