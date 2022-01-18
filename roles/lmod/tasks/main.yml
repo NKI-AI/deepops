@@ -89,6 +89,14 @@
   tags:
     - configuration
 
+- name: source zsh profile on login
+  lineinfile:
+    dest: /etc/zsh/zprofile
+    insertafter: EOF
+    line: 'source /etc/profile.d/z00_lmod.zsh'
+  register: update_zsh_lmod
+
+
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=891541
 - name: "bugfix for lmod posix_c"
   become: yes

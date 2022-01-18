@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # -*- shell-script -*-
 #  Lua based module management.
 # -
@@ -27,5 +27,5 @@ if [ $(id -u) -ne 0 ] ; then
       export MANPATH=:
     fi
     export MANPATH=$(/usr/share/lmod/lmod/libexec/addto MANPATH /usr/share/lmod/lmod/share/man)
-    . /usr/share/lmod/lmod/init/bash >/dev/null # Module Support
+    source /usr/share/lmod/lmod/init/bash >/dev/null # Module Support
 fi
