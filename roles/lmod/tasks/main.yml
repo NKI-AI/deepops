@@ -23,6 +23,7 @@
     name:
     - bash
     - tcsh
+    - zsh
     - lmod
     state: present
   when: ansible_os_family == "Debian"
@@ -42,6 +43,7 @@
     name:
     - bash
     - tcsh
+    - zsh
     - Lmod
     enablerepo: powertools
   when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "8"
@@ -76,6 +78,17 @@
   tags:
     - configuration
 
+- name: "configure zsh profile"
+  become: yes
+  template:
+    src: templates/z00_lmod.zsh
+    dest: /etc/profile.d
+    owner: root
+    group: root
+    mode: 0777
+  tags:
+    - configuration
+
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=891541
 - name: "bugfix for lmod posix_c"
   become: yes
@@ -97,12 +110,17 @@
   args:
     executable: /bin/csh
 
-- name: "auto load lmod"
+- name: "auto load lmod bash"
   shell: . /etc/profile.d/z00_lmod.sh
   args:
     executable: /bin/bash
 
-- name: "auto load lmod "
+- name: "auto load lmod csh"
   shell: source /etc/profile.d/z00_lmod.csh
   args:
     executable: /bin/csh
+
+- name: "auto load lmod zsh"
+  shell: source /etc/profile.d/z00_lmod.zsh
+  args:
+    executable: /bin/zsh

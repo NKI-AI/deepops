@@ -122,7 +122,7 @@
   run_once: true
 
 - name: create account
-  command: sacctmgr -i add account compute-account Description="Compute Accounts" Organization="Prestige"
+  command: sacctmgr -i add account {{ slurm_default_group }} Description="default compute accounts" Organization="{{ slurm_organization_name }}"
   register: create_account_result
   failed_when: "create_account_result.rc != 0 and 'Nothing new added' not in create_account_result.stdout"
   changed_when: "'Nothing new added' not in create_account_result.stdout"
@@ -130,7 +130,7 @@
     PATH: '{{ slurm_install_prefix }}/bin:{{ ansible_env.PATH }}'
 
 - name: create users
-  command: sacctmgr -i create user {{ item }} account=compute-account adminlevel=None
+  command: sacctmgr -i create user {{ item }} account={{ slurm_default_group }} adminlevel=None
   register: create_user_result
   failed_when: "create_user_result.rc != 0 and 'Nothing new added' not in create_user_result.stdout"
   changed_when: "'Nothing new added' not in create_user_result.stdout"

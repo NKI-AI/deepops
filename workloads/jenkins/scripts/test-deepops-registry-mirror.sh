@@ -6,14 +6,14 @@ source workloads/jenkins/scripts/jenkins-common.sh
 
 set -ex
 
-# Check that deepops-registry container is running
+# Check that kosmos-registry container is running
 ssh \
 	-o "StrictHostKeyChecking no" \
 	-o "UserKnownHostsFile /dev/null" \
 	-l vagrant \
 	-i "${HOME}/.ssh/id_rsa" \
 	"10.0.0.2${GPU01}" \
-	"sudo docker ps | grep deepops-registry"
+	"sudo docker ps | grep kosmos-registry"
 
 # Check that dockerd is configured to use this registry as a mirror
 ssh \

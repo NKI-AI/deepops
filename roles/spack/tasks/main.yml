@@ -37,6 +37,7 @@
   with_items:
   - "z00_spack.sh"
   - "z00_spack.csh"
+  - "z00_spack.zsh"
 
 - name: source spack environment once for initialization
   shell: |

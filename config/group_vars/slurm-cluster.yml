@@ -18,6 +18,11 @@ slurm_db_password: AlsoReplaceWithASecurePasswordInTheVault
 slurm_max_job_timelimit: 10080
 slurm_default_job_timelimit: 60
 
+slurm_default_group: aifo
+slurm_organization_name: nki
+
+
+
 # Grace time for partition in seconds at preemption
 slurm_grace_time: 120
 
