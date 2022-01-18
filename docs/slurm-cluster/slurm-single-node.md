@@ -320,7 +320,7 @@ users unnecessarily.
 
 DeepOps sets up rootless docker as a module package. Environment modules are a
 popular way to setup cluster wide software for sharing. On a side note DeepOps
-can set up easybuild or spack to manage environment modules and packages. The
+can set up spack to manage environment modules and packages. The
 workflow with rootless docker is as follows:
 
   1. A user starts a slurm job;

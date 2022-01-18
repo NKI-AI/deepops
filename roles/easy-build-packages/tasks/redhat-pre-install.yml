@@ -1,8 +1,0 @@
-#
-# install software modules using EasyBuild:
-#
----
-- name: "RHEL install"
-  debug:
-    msg: "No installs for RHEL"
-
