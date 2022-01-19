@@ -14,3 +14,4 @@ spack_ubuntu_deps:
 spack_build_packages: false
 spack_default_packages:
 - "cuda@10.1.0"
+- "openmpi@3.1.6 +cuda +pmi"
