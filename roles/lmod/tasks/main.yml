@@ -2,21 +2,6 @@
 # ansible role to install lmod:
 #
 ---
-- name: RedHat | trust GPG key for EPEL
-  rpm_key:
-    key: "{{ epel_key_url }}"
-    state: present
-  when: ansible_os_family == "RedHat"
-
-- name: RedHat | add epel repo
-  become: yes
-  yum:
-    name: 
-      - "{{ epel_package }}"
-    state: latest
-  environment: "{{proxy_env if proxy_env is defined else {}}}"
-  when: ansible_os_family == "RedHat"
-
 - name: "install packages"
   become: yes
   apt:
@@ -27,26 +12,6 @@
     - lmod
     state: present
   when: ansible_os_family == "Debian"
-
-- name: "install packages"
-  become: yes
-  yum:
-    name:
-    - bash
-    - tcsh
-    - Lmod
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
-
-- name: "install packages"
-  become: yes
-  dnf:
-    name:
-    - bash
-    - tcsh
-    - zsh
-    - Lmod
-    enablerepo: powertools
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "8"
 
 - name: "mkdir software path"
   become: yes

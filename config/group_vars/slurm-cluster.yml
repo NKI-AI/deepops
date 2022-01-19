@@ -37,7 +37,7 @@ hosts_add_ansible_managed_hosts_groups: ["slurm-cluster"]
 #       Ideally this is on external NFS server and not the primary control node, since its failure
 #       would also take down that NFS share
 slurm_enable_ha: false
-slurm_ha_state_save_location: "/sw/slurm"
+slurm_ha_state_save_location: "/mnt/sw/slurm"
 
 # Slurm configuration is auto-generated from templates in the `slurm` role.
 # If you want to override any of these files with custom config files, please
@@ -97,20 +97,21 @@ nfs_client_group: "slurm-master[1:],slurm-node"
 
 ################################################################################
 # SOFTWARE MODULES (SM)                                                        #
-#   May be built with Spack                                #
+#   May be built with Spack                                                    #
 ################################################################################
 slurm_install_lmod: true
 
 # Note: the sm_prefix must be in an NFS-shared location
-sm_prefix: "/sw"
+sm_prefix: "/mnt/sw"
 
 
 # Spack-specific
 spack_install_dir: "{{ sm_prefix }}/spack"
-spack_build_packages: false
+spack_build_packages: true
 spack_default_packages:
-- "cuda@10.2.89"
-- "openmpi@3.1.6 +cuda +pmi schedulers=auto"
+- "cuda@11.1.0 target=zen2"
+
+
 
 # Which host should we run installs on for software going into the NFS share?
 sm_install_host: "slurm-master[0]"

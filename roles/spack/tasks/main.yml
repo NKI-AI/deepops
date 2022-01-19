@@ -1,5 +1,5 @@
 ---
-- name: ensure development tools are installed (Ubuntu)
+- name: ensure development tools are installed
   apt:
     name: "{{ item }}"
     state: "present"
@@ -18,25 +18,6 @@
     repo: "{{ spack_repo }}"
     dest: "{{ spack_install_dir }}"
     version: "{{ spack_version }}"
-
-- name: set up spack profile scripts
-  template:
-    src: "{{ item }}"
-    dest: "/etc/profile.d/{{ item }}"
-    owner: "root"
-    group: "root"
-    mode: "0755"
-  with_items:
-  - "z00_spack.sh"
-  - "z00_spack.csh"
-  - "z00_spack.zsh"
-
-- name: source zsh profile on login
-  lineinfile:
-    dest: /etc/zsh/zprofile
-    insertafter: EOF
-    line: 'source /etc/profile.d/z00_spack.zsh'
-  register: update_zsh_spack
 
 - name: source spack environment once for initialization
   shell: |

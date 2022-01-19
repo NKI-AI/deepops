@@ -11,14 +11,6 @@ spack_ubuntu_deps:
 - "make"
 - "git"
 
-spack_redhat_deps:
-- "gcc"
-- "gcc-c++"
-- "gcc-fortran"
-- "make"
-- "git"
-
 spack_build_packages: false
 spack_default_packages:
-- "cuda@10.2.89"
-- "openmpi@3.1.6 +cuda +pmi schedulers=auto"
+- "cuda@10.1.0"
