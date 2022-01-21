@@ -15,19 +15,6 @@
     group: "root"
     mode: "0600"
 
-- name: trust GPG key for EPEL
-  rpm_key:
-    key: "{{ epel_key_url }}"
-    state: present
-  when: ansible_os_family == "RedHat"
-
-- name: Enable EPEL repo
-  package:
-    name:
-      - "{{ epel_package }}"
-    state: present
-  when: ansible_os_family == 'RedHat'
-
 - name: Ensure Python 2 dependencies are installed via OS packages
   when: (ansible_python.version.major==2) and (ansible_python.version.minor==7)
   block:

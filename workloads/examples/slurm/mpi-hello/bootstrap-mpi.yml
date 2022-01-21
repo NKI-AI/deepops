@@ -7,7 +7,7 @@
     apt:
       name: "{{ item }}"
     with_items:
-    - openmpi-bin
-    - libopenmpi-dev
+#    - openmpi-bin
+#    - libopenmpi-dev
     - libpmi2-pmix
     - libpmi-pmix-dev
