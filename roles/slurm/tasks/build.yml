@@ -197,7 +197,7 @@
     state: directory
     mode: 0775
 
-- name: fix deepops dir permissions
+- name: fix cluster management dir permissions
   file:
     path: "{{ deepops_dir }}"
     state: directory
