@@ -20,13 +20,6 @@
   tags:
     - nfs
 
-- name: install rhel packages
-  yum:
-    name: nfs-utils
-    state: latest
-  when: ansible_os_family == "RedHat"
-  tags:
-    - nfs
 
 - name: configure idmapd domain for nfsv4
   lineinfile:

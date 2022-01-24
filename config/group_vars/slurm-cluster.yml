@@ -61,7 +61,7 @@ slurm_login_on_compute: false
 slurm_configure_etc_hosts: yes
 dns_mode: none
 slurm_cluster_install_cuda: no
-slurm_cluster_install_nvidia_driver: no
+slurm_cluster_install_nvidia_driver: yes
 slurm_cluster_install_singularity: yes
 
 ################################################################################
@@ -109,7 +109,7 @@ sm_prefix: "/mnt/sw"
 spack_install_dir: "{{ sm_prefix }}/spack"
 spack_build_packages: true
 spack_default_packages:
-- "cuda@11.1.0 target=zen2"
+- "cuda@11.3.0 target=zen2"
 
 
 

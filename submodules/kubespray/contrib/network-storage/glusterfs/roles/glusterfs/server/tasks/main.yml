@@ -8,10 +8,6 @@
   apt: name=xfsprogs state=present
   when: ansible_os_family == "Debian"
 
-- name: install xfs RedHat
-  yum: name=xfsprogs state=present
-  when: ansible_os_family == "RedHat"
-
 # Format external volumes in xfs
 - name: Format volumes in xfs
   filesystem: "fstype=xfs dev={{ disk_volume_device_1 }}"
@@ -21,9 +17,6 @@
   mount: "name={{ gluster_volume_node_mount_dir }} src={{ disk_volume_device_1 }} fstype=xfs state=mounted"
 
 # Setup/install tasks.
-- include: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
