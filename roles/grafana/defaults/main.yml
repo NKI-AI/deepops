@@ -8,5 +8,5 @@ grafana_state: started
 grafana_enabled: yes
 
 grafana_cfg_user: admin
-grafana_cfg_pass: deepops
+grafana_cfg_pass: kosmos
 grafana_cfg_dashboard_path: "{{ grafana_data_dir }}/dashboards"
