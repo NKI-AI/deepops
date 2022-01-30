@@ -1,22 +1,5 @@
 #!/bin/bash
 
-{% if ansible_os_family == "RedHat" %}
-
-mun=$(sysctl -n user.max_user_namespaces 2>/dev/null || echo 0 )
-
-if [ "$mun" -lt "28633" ] ; then
-
-cat <<EOT > /etc/sysctl.d/51-rootless.conf
-user.max_user_namespaces = 28633
-EOT
-sudo sysctl --system
-
-fi
-
-# On RedHat the following might be needed:
-# grubby --update-kernel=ALL --args="namespace.unpriv_enable=1 user_namespace.enable=1"
-
-{% endif %}
 
 configfiledst="{{ rootlessdocker_install_dir }}/config/nvidia-container-runtime/config.toml"
 configfilesrc=/etc/nvidia-container-runtime/config.toml

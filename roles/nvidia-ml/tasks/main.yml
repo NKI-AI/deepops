@@ -3,9 +3,6 @@
   include_tasks: ubuntu-pre-install.yml
   when: ansible_distribution == 'Ubuntu'
 
-- name: redhat family pre-install tasks
-  include_tasks: redhat-pre-install.yml
-  when: ansible_os_family == 'RedHat'
 
 - name: Manage cuDNN and NCCL packages
   package:

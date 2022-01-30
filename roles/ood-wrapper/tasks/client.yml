@@ -12,14 +12,6 @@
     - vnc
   when: ansible_distribution == 'Ubuntu'
 
-- name: install turbovnc
-  yum:
-    name: "{{ ood_url_turbovnc_pkg }}"
-    state: present
-  tags:
-    - vnc
-  when: ansible_os_family == 'RedHat'
-
 - name: install codeserver
   unarchive:
     src: "{{ ood_url_codeserver_src }}"

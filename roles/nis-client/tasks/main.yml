@@ -19,10 +19,6 @@
   apt: name=nis,rpcbind state=latest
   when: ansible_os_family == "Debian"
 
-- name: install CentOS NIS packages
-  yum: name=ypbind state=latest
-  when: ansible_os_family == "RedHat"
-
 - name: ensure rpcbind is running
   service: name=rpcbind state=started enabled=yes
 

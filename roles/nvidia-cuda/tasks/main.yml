@@ -12,10 +12,6 @@
   include_tasks: install-ubuntu.yml
   when: (ansible_distribution == "Ubuntu") and (is_dgx.stat.exists == False)
 
-- name: redhat family install tasks
-  include_tasks: install-redhat.yml
-  when: (ansible_os_family == "RedHat") and (is_dgx.stat.exists == False)
-
 - name: add profile script to set environment for toolkit
   copy:
     src: "cuda-vars.sh"

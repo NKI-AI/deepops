@@ -19,12 +19,6 @@
   with_items: "{{ slurm_hwloc_deps }}"
   when: ansible_distribution == 'Ubuntu'
 
-- name: install hwloc build dependencies
-  yum:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ slurm_hwloc_deps }}"
-  when: ansible_os_family == 'RedHat'
 
 - name: remove hwloc packages
   apt:
@@ -35,17 +29,6 @@
     - libhwloc-dev
     - libhwloc5
   when: ansible_distribution == 'Ubuntu'
-  ignore_errors: yes
-
-- name: remove hwloc packages
-  yum:
-    name: "{{ item }}"
-    state: absent
-  with_items:
-    - hwloc-devel
-    - hwloc-libs
-    - hwloc
-  when: ansible_os_family == 'RedHat'
   ignore_errors: yes
 
 - name: make hwloc build directory

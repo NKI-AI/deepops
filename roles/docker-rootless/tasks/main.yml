@@ -7,14 +7,6 @@
     state: present
   when: ansible_distribution == "Ubuntu"
 
-- name: install dependencies (Red Hat)
-  yum:
-    name:
-    - "shadow-utils"
-    - "fuse-overlayfs"
-    state: present
-  when: ansible_os_family == "RedHat"
-
 - name: Ensure directory structure exists
   file:
     path: '{{ rootlessdocker_install_dir }}/{{ item.path }}'
