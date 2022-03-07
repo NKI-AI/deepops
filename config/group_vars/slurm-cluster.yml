@@ -27,7 +27,9 @@ slurm_organization_name: nki
 slurm_grace_time: 120
 
 # Default memory used per CPU
-slurm_def_mem_per_cpu: 3800
+# TODO: This should depend on the machine
+# Likely can be set in the host_vars
+slurm_def_mem_per_cpu: 7000
 
 # Ensure hosts file generation only runs across slurm cluster
 hosts_add_ansible_managed_hosts_groups: ["slurm-cluster"]
