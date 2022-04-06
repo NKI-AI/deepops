@@ -51,6 +51,10 @@
      cuda_playbook_install_driver: "{{ slurm_cluster_install_nvidia_driver }}"
   when: slurm_cluster_install_cuda|default(true)
 
+# Install NVIDIA MIG-parted
+- include: nvidia-software/nvidia-mig.yml
+  when: slurm_cluster_install_mig|default(true)
+
 # Install software
 - include: generic/software.yml
 

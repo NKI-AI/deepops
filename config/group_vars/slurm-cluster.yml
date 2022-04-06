@@ -64,6 +64,7 @@ slurm_configure_etc_hosts: yes
 dns_mode: none
 slurm_cluster_install_cuda: no
 slurm_cluster_install_nvidia_driver: no  # This does not work well
+slurm_cluster_install_mig: yes
 slurm_cluster_install_singularity: yes
 
 ################################################################################
