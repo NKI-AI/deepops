@@ -53,6 +53,7 @@
     daemon-reload: yes
   when: ansible_os_family == "RedHat"
 
+# TODO: you need to disable this when running on an existing cluster
 - name: setup slurm db user
   mysql_user:
     name: "{{ slurm_db_username }}"

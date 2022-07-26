@@ -13,6 +13,7 @@ aristarchus         ansible_host=rhpc-aristarchus
 ptolemaeus          ansible_host=rhpc-ptolemaeus
 eudoxus             ansible_host=rhpc-eudoxus
 atlas               ansible_host=rhpc-atlas
+eratosthenes        ansible_host=rhpc-eratosthenes
 
 
 ######
@@ -44,9 +45,11 @@ atlas               ansible_host=rhpc-atlas
 [slurm-master]
 atlas
 
-[slurm-metric]
-atlas
+[slurm-login]
+eratosthenes
 
+[slurm-metric]
+eratosthenes
 
 [slurm-node]
 aristarchus
@@ -56,6 +59,7 @@ eudoxus
 [slurm-cluster:children]
 slurm-master
 slurm-node
+slurm-login
 
 
 ######

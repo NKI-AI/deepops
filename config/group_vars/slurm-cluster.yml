@@ -3,7 +3,7 @@
 ################################################################################
 # Slurm job scheduler configuration
 # Playbook: slurm, slurm-cluster, slurm-perf, slurm-perf-cluster, slurm-validation
-slurm_version: 21.08.1
+slurm_version: 21.08.8
 slurm_install_prefix: /usr/local
 pmix_install_prefix: /opt/kosmos-cluster/pmix
 hwloc_install_prefix: /opt/kosmos-cluster/hwloc
@@ -109,14 +109,14 @@ sm_prefix: "/mnt/sw"
 
 # Spack-specific
 spack_install_dir: "{{ sm_prefix }}/spack"
-spack_build_packages: true
+spack_build_packages: false
 spack_default_packages:
-- "cuda@11.3.0 target=zen2"
+- "7z"
 
 
 
 # Which host should we run installs on for software going into the NFS share?
-sm_install_host: "slurm-master[0]"
+sm_install_host: "slurm-login[0]"
 
 ################################################################################
 # NVIDIA HPC SDK                                                               #
@@ -195,8 +195,8 @@ slurm_health_check_program: "/usr/sbin/nhc"
 # Container registry                                                           #
 ################################################################################
 slurm_enable_container_registry: true
-docker_insecure_registries: "{{ groups['slurm-master'] | map('regex_replace', '^(.*)$', '\\1:5000') | list + ['registry.local:31500'] }}"
-docker_registry_mirrors: "{{ groups['slurm-master'] | map('regex_replace', '^(.*)$', 'http://\\1:5000') | list }}"
+docker_insecure_registries: "{{ groups['slurm-login'] | map('regex_replace', '^(.*)$', '\\1:5000') | list + ['registry.local:31500'] }}"
+docker_registry_mirrors: "{{ groups['slurm-login'] | map('regex_replace', '^(.*)$', 'http://\\1:5000') | list }}"
 
 ################################################################################
 # Monitoring stack                                                             #
@@ -206,7 +206,7 @@ slurm_enable_monitoring: yes
 # Inventory host groups where cluster monitoring services will be installed
 # (Prometheus, Grafana, etc)
 # This is not ok? Needs to be on slurm-metric
-slurm_monitoring_group: "slurm-master"
+slurm_monitoring_group: "slurm-login"
 
 ################################################################################
 # Logging with rsyslog                                                         #
