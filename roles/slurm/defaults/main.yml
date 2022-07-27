@@ -1,12 +1,9 @@
-epel_package: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
-epel_key_url: "https://getfedora.org/static/fedora.gpg"
-
 slurm_build_dir: /opt/kosmos-cluster/build/slurm
 hwloc_build_dir: /opt/kosmos-cluster/build/hwloc
 pmix_build_dir: /opt/kosmos-cluster/build/pmix
 
 slurm_workflow_build: yes
-slurm_version: 21.08.0
+slurm_version: 22.05.2
 slurm_src_url: "https://download.schedmd.com/slurm/slurm-{{ slurm_version }}.tar.bz2"
 slurm_build_make_clean: no
 slurm_build_dir_cleanup: no
@@ -29,7 +26,7 @@ slurm_db_username: slurm
 slurm_db_password: AlsoReplaceWithASecurePasswordInTheVault
 
 slurm_enable_ha: false
-slurm_ha_state_save_location: "/sw/slurm"
+slurm_ha_state_save_location: "/mnt/sw/slurm"
 
 is_controller: no
 is_compute: no

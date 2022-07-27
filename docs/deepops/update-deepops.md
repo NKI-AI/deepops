@@ -426,7 +426,7 @@ Performing these component-based upgrades does not require updating the DeepOps 
 To upgrade to a new version of Slurm, modify your DeepOps configuration to specify your desired Slurm version:
 
 ```
-slurm_version: 21.08.0
+slurm_version: 22.05.2
 ```
 
 Then re-run the Slurm playbook:
