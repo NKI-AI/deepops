@@ -154,7 +154,7 @@ openmpi_configure: "./configure --prefix={{ openmpi_install_prefix }} --disable-
 ################################################################################
 # Open OnDemand                                                                #
 ################################################################################
-install_open_ondemand: no
+install_open_ondemand: yes
 # OOD Linux-host adapter requires `slurm_cluster_install_singularity` to be true
 ood_install_linuxhost_adapter: no
 

@@ -54,13 +54,13 @@
   when: ansible_os_family == "RedHat"
 
 # TODO: you need to disable this when running on an existing cluster
-- name: setup slurm db user
-  mysql_user:
-    name: "{{ slurm_db_username }}"
-    password: "{{ slurm_db_password }}"
-    host: localhost
-    priv: "*.*:USAGE/slurm_acct_db.*:ALL"
-    state: present
+#- name: setup slurm db user
+#  mysql_user:
+#    name: "{{ slurm_db_username }}"
+#    password: "{{ slurm_db_password }}"
+#    host: localhost
+#    priv: "*.*:USAGE/slurm_acct_db.*:ALL"
+#    state: present
 
 - name: create slurm directories
   file:

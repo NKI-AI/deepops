@@ -1,0 +1,30 @@
+#
+# ansible role to setup motd prompt
+#
+---
+- name: disable current motd
+  become: yes
+  command:
+    chdir: /etc/update-motd.d
+    argv:
+      - chmod
+      - 000
+      - *
+  ignore_errors: true
+  tags: motd
+
+- name: install motd header
+  template:
+    src: "{{ motd_header_template }}"
+    dest: /etc/update-motd.d
+    owner: root
+    group: root
+    mode: 0755
+
+- name: install motd sysinfo
+  template:
+    src: "{{ motd_sysinfo_template }}"
+    dest: /etc/update-motd.d
+    owner: root
+    group: root
+    mode: 0755
