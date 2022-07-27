@@ -10,6 +10,7 @@ hwloc_install_prefix: /opt/kosmos-cluster/hwloc
 #slurm_user_home: /local/slurm
 slurm_manage_gpus: true
 slurm_cluster_name: kosmos
+
 #slurm_username: slurm
 slurm_password: ReplaceWithASecurePasswordInTheVault
 #slurm_db_username: slurm
@@ -30,6 +31,9 @@ slurm_grace_time: 120
 # TODO: This should depend on the machine
 # Likely can be set in the host_vars
 slurm_def_mem_per_cpu: 7000
+
+# Slurm default partition
+slurm_partition_name: batch
 
 # Ensure hosts file generation only runs across slurm cluster
 hosts_add_ansible_managed_hosts_groups: ["slurm-cluster"]
@@ -172,7 +176,7 @@ allow_user_set_gpu_clocks: no
 ################################################################################
 slurm_install_enroot: yes
 slurm_install_pyxis: yes
-slurm_pyxis_version: 0.11.1
+slurm_pyxis_version: 0.13.0
 
 ################################################################################
 # Node Health Check                                                            #
