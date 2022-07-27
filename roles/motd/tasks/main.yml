@@ -4,19 +4,14 @@
 ---
 - name: disable current motd
   become: yes
-  command:
-    chdir: /etc/update-motd.d
-    argv:
-      - chmod
-      - 000
-      - *
-  ignore_errors: true
+  command: find /etc/update-motd.d -type f -exec chmod 0000 {} \;
   tags: motd
+
 
 - name: install motd header
   template:
     src: "{{ motd_header_template }}"
-    dest: /etc/update-motd.d
+    dest: /etc/update-motd.d/00-header
     owner: root
     group: root
     mode: 0755
@@ -24,7 +19,7 @@
 - name: install motd sysinfo
   template:
     src: "{{ motd_sysinfo_template }}"
-    dest: /etc/update-motd.d
+    dest: /etc/update-motd.d/50-landscape-sysinfo
     owner: root
     group: root
     mode: 0755
