@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-SCRATCH_FOLDER=/processing"$SLURM_JOB_USER"
+SCRATCH_FOLDER=/processing/"$SLURM_JOB_USER"
 
 if [ ! -d $SCRATCH_FOLDER ]; then
   sudo mkdir -p "$SCRATCH_FOLDER"
