@@ -52,7 +52,7 @@ PKGS_COMMON:
   - cachefilesd
   - bash-completion
   - vim
-  - linux-tools-generic
+#  - linux-tools-generic
   - linux-tools-common
   - cmake
   - man-db

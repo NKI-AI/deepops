@@ -30,7 +30,18 @@ slurm_grace_time: 120
 # Default memory used per CPU
 # TODO: This should depend on the machine
 # Likely can be set in the host_vars
-slurm_def_mem_per_cpu: 7000
+
+# TODO: this must be somewhere else??
+partition_settings:
+  a100:
+    slurm_def_mem_per_cpu: 7000
+    slurm_max_job_timelimit: 10080
+  a6000:
+    slurm_def_mem_per_cpu: 7000
+    slurm_max_job_timelimit: 10080
+  rtx2080ti:
+    slurm_def_mem_per_cpu: 9000
+    slurm_max_job_timelimit: 20160
 
 # Slurm default partition
 slurm_partition_name: batch

@@ -9,11 +9,20 @@
 # NOTE: Use existing hostnames here, DeepOps will configure server hostnames to match these values
 ######
 [all]
+# A6000 nodes
 aristarchus         ansible_host=rhpc-aristarchus
 ptolemaeus          ansible_host=rhpc-ptolemaeus
+# A100 nodes
 eudoxus             ansible_host=rhpc-eudoxus
-atlas               ansible_host=rhpc-atlas
+# CPU nodes
 eratosthenes        ansible_host=rhpc-eratosthenes
+# RTX2080Ti nodes
+plato               ansible_host=rhpc-plato
+# schrodinger         ansible_host=rhpc-schrodinger
+# VMs
+atlas               ansible_host=rhpc-atlas
+
+
 
 
 ######
@@ -55,6 +64,7 @@ eratosthenes
 aristarchus
 ptolemaeus
 eudoxus
+plato
 
 [slurm-cluster:children]
 slurm-master
