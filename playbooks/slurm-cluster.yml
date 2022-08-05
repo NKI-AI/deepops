@@ -49,7 +49,7 @@
 - include: nvidia-software/nvidia-cuda.yml
   vars:
      cuda_playbook_install_driver: "{{ slurm_cluster_install_nvidia_driver }}"
-  when: slurm_cluster_install_cuda|default(true)
+  when: slurm_cluster_install_cuda|default(false)
 
 # Install software
 - include: generic/software.yml

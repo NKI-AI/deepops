@@ -18,7 +18,7 @@ eudoxus             ansible_host=rhpc-eudoxus
 eratosthenes        ansible_host=rhpc-eratosthenes
 # RTX2080Ti nodes
 plato               ansible_host=rhpc-plato
-# schrodinger         ansible_host=rhpc-schrodinger
+schrodinger         ansible_host=rhpc-schrodinger
 # VMs
 atlas               ansible_host=rhpc-atlas
 
@@ -65,6 +65,7 @@ aristarchus
 ptolemaeus
 eudoxus
 plato
+schrodinger
 
 [slurm-cluster:children]
 slurm-master
