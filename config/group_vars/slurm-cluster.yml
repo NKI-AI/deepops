@@ -71,8 +71,13 @@ slurm_ha_state_save_location: "/mnt/sw/slurm"
 ################################################################################
 # Login on compute
 ################################################################################
+# Restrict user SSH access to only allow users with a running job
+slurm_restrict_node_access: true
 slurm_allow_ssh_user: []
 # TODO: allow groups here
+# Enable a Slurm compute node to also function as a login node.
+# This is needed for the "single node Slurm cluster" configuration.
+# See docs/slurm-cluster/slurm-single-node.md
 slurm_login_on_compute: false
 
 ################################################################################
@@ -109,13 +114,16 @@ nfs_mounts:
 
 # Flags for enable/disable of NFS deployment
 #  - Set up an NFS server on nfs-server?
-slurm_enable_nfs_server: false
+slurm_enable_nfs_server: true
 #  - Mount NFS filesystems on nfs-clients?
-slurm_enable_nfs_client_nodes: false
+slurm_enable_nfs_client_nodes: true
 
 # Inventory host groups to use for NFS server or clients
 nfs_server_group: "slurm-master[0]"
 nfs_client_group: "slurm-master[1:],slurm-node"
+
+# Flags for sharing slurm.conf among compute and control nodes
+slurm_conf_symlink: true
 
 ################################################################################
 # SOFTWARE MODULES (SM)                                                        #

@@ -1,3 +1,0 @@
-- targets: [{{ groups[slurm_exporter_host_group] | zip_longest([], fillvalue=':8080') | map('join') | join(',') }}]
-  labels:
-    module: slurm-exporter
