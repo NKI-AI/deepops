@@ -11,7 +11,7 @@
 [all]
 # A6000 nodes
 aristarchus         ansible_host=rhpc-aristarchus
-# ptolemaeus          ansible_host=rhpc-ptolemaeus
+ptolemaeus          ansible_host=rhpc-ptolemaeus
 # A100 nodes
 # eudoxus             ansible_host=rhpc-eudoxus
 # CPU nodes
@@ -62,7 +62,7 @@ eratosthenes
 
 [slurm-node]
 aristarchus
-# ptolemaeus
+ptolemaeus
 # eudoxus
 plato
 schrodinger

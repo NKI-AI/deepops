@@ -21,7 +21,7 @@
 - name: clone nvtop
   become: yes
   git:
-    src: "{{ nvtop_github_url }}"
+    repo: "{{ nvtop_github_url }}"
     dest: /usr/local/src/nvtop
     clone: yes
     update: yes
