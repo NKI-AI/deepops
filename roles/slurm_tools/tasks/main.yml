@@ -1,0 +1,9 @@
+---
+- name: clone slurm_tools
+  become: yes
+  git:
+    repo: "{{ slurm_tools_github_url }}"
+    dest: /tmp
+    clone: yes
+    update: yes
+  tags: slurm_tools
