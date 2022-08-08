@@ -35,14 +35,17 @@ slurm_grace_time: 120
 partition_settings:
   a100:
     slurm_def_mem_per_cpu: 7000
+    slurm_allow_qos: a100
     slurm_max_job_timelimit: 10080
     default: false
   a6000:
     slurm_def_mem_per_cpu: 7000
+    slurm_allow_qos: "ALL"
     slurm_max_job_timelimit: 10080
     default: false
   rtx2080ti:
     slurm_def_mem_per_cpu: 9000
+    slurm_allow_qos: "ALL"
     slurm_max_job_timelimit: 20160
     default: true
 
