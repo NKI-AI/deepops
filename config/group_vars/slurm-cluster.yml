@@ -40,12 +40,12 @@ partition_settings:
     default: false
   a6000:
     slurm_def_mem_per_cpu: 7000
-    slurm_allow_qos: "ALL"
+    slurm_allow_qos: normal,a100,fourgpu
     slurm_max_job_timelimit: 10080
     default: false
   rtx2080ti:
     slurm_def_mem_per_cpu: 9000
-    slurm_allow_qos: "ALL"
+    slurm_allow_qos: normal,rtxqos,fourgpu
     slurm_max_job_timelimit: 20160
     default: true
 
@@ -133,6 +133,7 @@ slurm_conf_symlink: true
 #   May be built with Spack                                                    #
 ################################################################################
 slurm_install_lmod: true
+slurm_install_spack: true
 
 # Note: the sm_prefix must be in an NFS-shared location
 sm_prefix: "/mnt/sw"

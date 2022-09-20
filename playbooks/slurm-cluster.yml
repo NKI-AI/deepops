@@ -83,6 +83,16 @@
 - include: slurm-cluster/lmod.yml
   when: slurm_install_lmod
 
+# Install spack
+- include: slurm-cluster/spack-modules.yml
+  when: slurm_install_spack
+
+# Update motd
+- include: slurm-cluster/motd.yml
+
+# Install nvtop
+- include: slurm-cluster/nvtop.yml
+
 # Install the NVIDIA HPC SDK
 - include: nvidia-software/nvidia-hpc-sdk.yml
   vars:

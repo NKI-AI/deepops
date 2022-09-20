@@ -64,5 +64,5 @@ roles:
 - src: gantsign.golang
   version: 2.4.0
 
-- src: lecorguille.singularity
-  version: 1.2.0
+- src: abims_sbr.singularity
+  version: 3.7.1-1
