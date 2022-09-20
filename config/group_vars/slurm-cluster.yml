@@ -91,7 +91,7 @@ dns_mode: none
 slurm_cluster_install_cuda: no
 slurm_cluster_install_nvidia_driver: yes  # This does not work well
 nvidia_driver_ubuntu_branch: "470"
-nvidia_driver_skip_reboot: false
+nvidia_driver_skip_reboot: true  # modprobe nvidia-uvm works often too
 slurm_cluster_install_singularity: yes
 
 ################################################################################
