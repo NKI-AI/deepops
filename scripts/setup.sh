@@ -21,7 +21,7 @@ JINJA2_VERSION="${JINJA2_VERSION:-2.11.3}"      # Jinja2 required version
 MARKUPSAFE_VERSION="${MARKUPSAFE_VERSION:-1.1.1}"  # MarkupSafe version
 PIP="${PIP:-pip3}"                              # Pip binary to use
 PYTHON_BIN="${PYTHON_BIN:-/usr/bin/python3}"    # Python3 path
-VENV_DIR="${VENV_DIR:-/opt/deepops/env}"        # Path to python virtual environment to create
+VENV_DIR="${VENV_DIR:-/opt/kosmos-cluster/env}"        # Path to python virtual environment to create
 
 ###
 

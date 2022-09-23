@@ -1,0 +1,3 @@
+---
+dcgm_is_dgx: false
+_ubuntu_repo_dir: "{{ ansible_distribution | lower }}{{ ansible_distribution_version | replace('.', '') }}/{{ ansible_architecture }}"

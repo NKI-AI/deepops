@@ -50,7 +50,7 @@ partition_settings:
     default: true
 
 # Slurm default partition
-slurm_partition_name: batch
+# slurm_partition_name: batch
 
 # Ensure hosts file generation only runs across slurm cluster
 hosts_add_ansible_managed_hosts_groups: ["slurm-cluster"]
