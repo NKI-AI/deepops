@@ -1,7 +1,7 @@
 ---
 dependencies:
 - role: facts
-- role: rsyslog_client
+- role: rsyslog-client
 
 galaxy_info:
   namespace: deepops
