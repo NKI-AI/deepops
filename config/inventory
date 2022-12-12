@@ -17,9 +17,11 @@ eudoxus             ansible_host=rhpc-eudoxus
 euctemon            ansible_host=rhpc-euctemon
 # CPU nodes
 eratosthenes        ansible_host=rhpc-eratosthenes
-# RTX2080Ti nodes
+# RTX2080Ti small nodes
 plato               ansible_host=rhpc-plato
 schrodinger         ansible_host=rhpc-schrodinger
+# RTX2080Ti large node
+alanturing          ansible_host=rhpc-alanturing
 # VMs
 atlas               ansible_host=rhpc-atlas
 
@@ -68,6 +70,7 @@ euctemon
 eudoxus
 plato
 schrodinger
+alanturing
 
 [slurm-cluster:children]
 slurm-master
