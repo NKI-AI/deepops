@@ -10,7 +10,7 @@
  {{ ansible_hostname }} || check_fs_mount_rw /
 
 # Check disk space in /processing
- {{ ansible_hostname }} || check_fs_free /processing 10%
+ {{ ansible_hostname }} || check_fs_free /processing 5%
 
 # Check that Ethernet connections are up
 # (commented out as this detects interfaces that may not need to be online)
