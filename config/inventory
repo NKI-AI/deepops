@@ -25,6 +25,9 @@ alanturing          ansible_host=rhpc-alanturing
 # VMs
 atlas               ansible_host=rhpc-atlas
 
+# Storage nodes
+#rhea                ansible_host=rhpc-rhea
+
 
 
 
@@ -76,6 +79,9 @@ alanturing
 slurm-master
 slurm-node
 slurm-login
+
+#[storage]
+#rhea
 
 
 ######

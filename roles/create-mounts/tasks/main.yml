@@ -1,0 +1,9 @@
+- name: Mount project-pools
+  ansible.posix.mount:
+    src: rhea:/project-pool/{{ item }}
+    path: /projects/{{ item }}
+    opts: rsize=524288,wsize=524288,vers=3,timeo=30,intr
+    boot: yes
+    state: mounted
+    fstype: nfs
+  loop: "{{ project_pool }}"

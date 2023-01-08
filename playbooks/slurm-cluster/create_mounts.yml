@@ -1,0 +1,14 @@
+---
+- hosts:  "{{ hostlist | default('slurm-login,slurm-node') }}"
+  become: yes
+  vars:
+    project_pool:
+      - cbct_reconstruction
+      - direct
+      - mmd-pcr
+      - mri_seq2seq
+      - nki-breast-mri
+      - tcr-bert
+      - y_gao_temporary
+  roles:
+  - create-mounts
