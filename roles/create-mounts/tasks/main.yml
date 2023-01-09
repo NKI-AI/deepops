@@ -3,15 +3,26 @@
     dest: /etc/fstab
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     content: |
+      rhea:/project-pool/projects/abdomen_segmentation /projects/abdomen_segmentation nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/cbct_reconstruction /projects/cbct_reconstruction nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/computational-til-assessment-prognostics-2023 /projects/computational-til-assessment-prognostics-2023 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/deepsmile-2022 /projects/deepsmile-2022 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/direct /projects/direct nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/direct_cvpr22 /projects/direct_cvpr22 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/direct_mrm23 /projects/direct_mrm23 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/direct_spie22 /projects/direct_spie22 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/gan-mri /projects/gan-mri nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/gan-mri-data /projects/gan-mri-data nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/mmd-pcr /projects/mmd-pcr nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/mri_seq2seq /projects/mri_seq2seq nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/mri_seq2seq_data /projects/mri_seq2seq_data nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/mtp-bcr /projects/mtp-bcr nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/nki-breast-mri /projects/nki-breast-mri nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/rissl /projects/rissl nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/tcr-bert /projects/tcr-bert nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/xin-data /projects/xin-data nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      rhea:/project-pool/projects/yao_temporary /projects/yao_temporary nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+
   register: update_fstab
 
 - name: create mounts if they don't exist
@@ -19,15 +30,25 @@
     path: "{{ item }}"
     state: directory
   loop:
+    - /projects/abdomen_segmentation
     - /projects/cbct_reconstruction
     - /projects/computational-til-assessment-prognostics-2023
     - /projects/deepsmile-2022
     - /projects/direct
+    - /projects/direct_cvpr22
+    - /projects/direct_mrm23
+    - /projects/direct_spie22
+    - /projects/gan-mri
+    - /projects/gan-mri-data
     - /projects/mmd-pcr
     - /projects/mri_seq2seq
+    - /projects/mri_seq2seq_data
+    - /projects/mtp-bcr
     - /projects/nki-breast-mri
     - /projects/rissl
     - /projects/tcr-bert
+    - /projects/xin-data
+    - /projects/yao_temporary
 
 - name: mount drives
   command: mount -a
