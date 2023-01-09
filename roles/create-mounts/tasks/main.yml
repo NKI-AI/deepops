@@ -1,9 +1,5 @@
-- name: Mount project-pools
-  ansible.posix.mount:
-    src: rhea:/project-pool/{{ item }}
-    path: /projects/{{ item }}
-    opts: rsize=524288,wsize=524288,vers=3,timeo=30,intr
-    boot: yes
-    state: mounted
-    fstype: nfs
-  loop: "{{ project_pool }}"
+- name: add projects to /etc/fstab
+  lineinfile:
+    dest: /etc/fstab
+    line: '"rhea:/project-pool/projects/cbct_reconstruction 	 /projects/cbct_reconstruction nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/computational-til-assessment-prognostics-2023 	 /projects/computational-til-assessment-prognostics-2023 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/deepsmile-2022 	 /projects/deepsmile-2022 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/direct 	 /projects/direct nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/mmd-pcr 	 /projects/mmd-pcr nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/mri_seq2seq 	 /projects/mri_seq2seq nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/nki-breast-mri 	 /projects/nki-breast-mri nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nrhea:/project-pool/projects/rissl 	 /projects/rissl nfs rsize=524288,ws nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0/projects/tcr-bert"'
+  register: update_fstab
