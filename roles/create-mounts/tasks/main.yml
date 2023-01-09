@@ -22,7 +22,6 @@
       rhea:/project-pool/projects/tcr-bert /projects/tcr-bert nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/xin-data /projects/xin-data nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/yao_temporary /projects/yao_temporary nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-
   register: update_fstab
 
 - name: create mounts if they don't exist

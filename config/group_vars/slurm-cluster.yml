@@ -100,11 +100,12 @@ slurm_cluster_install_singularity: yes
 # Default exports:
 # - /home: shared home directories, needed for Open OnDemand and best practice
 # - /sw:   shared space for software installs, used for Spack
-nfs_exports:
-  - path: /home
-    options: "*(rw,sync,no_root_squash)"
-  - path: /sw
-    options: "*(rw,sync,no_root_squash)"
+#nfs_exports:
+#  - path: /home
+#    options: "*(rw,sync,no_root_squash)"
+#  - path: /sw
+#    options: "*(rw,sync,no_root_squash)"
+
 nfs_mounts:
   - mountpoint: /home
     server: '{{ groups["slurm-master"][0] }}'

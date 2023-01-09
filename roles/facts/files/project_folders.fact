@@ -1,0 +1,5 @@
+#!/bin/bash
+
+folders=$(ssh -t rhea ls -m /project-pool/projects)
+
+python3 create_fstab.py $folders

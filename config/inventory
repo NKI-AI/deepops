@@ -22,6 +22,7 @@ plato               ansible_host=rhpc-plato
 schrodinger         ansible_host=rhpc-schrodinger
 # RTX2080Ti large node
 alanturing          ansible_host=rhpc-alanturing
+
 # VMs
 atlas               ansible_host=rhpc-atlas
 
