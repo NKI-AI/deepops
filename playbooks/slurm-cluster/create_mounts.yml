@@ -1,5 +1,10 @@
 ---
 - hosts:  "{{ hostlist | default('slurm-login,slurm-node') }}"
   become: yes
-  roles:
-  - create-mounts
+  tasks:
+    - name: Gather custom facts
+      include_role:
+        name: facts
+    - name: Create mount points
+      include_role:
+        name: create-mounts
