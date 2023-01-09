@@ -13,3 +13,22 @@
       rhea:/project-pool/projects/rissl /projects/rissl nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
       rhea:/project-pool/projects/tcr-bert /projects/tcr-bert nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
   register: update_fstab
+
+- name: create mounts if they don't exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /projects/cbct_reconstruction
+    - /projects/computational-til-assessment-prognostics-2023
+    - /projects/deepsmile-2022
+    - /projects/direct
+    - /projects/mmd-pcr
+    - /projects/mri_seq2seq
+    - /projects/nki-breast-mri
+    - /projects/rissl
+    - /projects/tcr-bert
+
+- name: mount drives
+  command: mount -a
+  register: drives_mounted
