@@ -28,26 +28,7 @@
   file:
     path: "{{ item }}"
     state: directory
-  loop:
-    - /projects/abdomen_segmentation
-    - /projects/cbct_reconstruction
-    - /projects/computational-til-assessment-prognostics-2023
-    - /projects/deepsmile-2022
-    - /projects/direct
-    - /projects/direct_cvpr22
-    - /projects/direct_mrm23
-    - /projects/direct_spie22
-    - /projects/gan-mri
-    - /projects/gan-mri-data
-    - /projects/mmd-pcr
-    - /projects/mri_seq2seq
-    - /projects/mri_seq2seq_data
-    - /projects/mtp-bcr
-    - /projects/nki-breast-mri
-    - /projects/rissl
-    - /projects/tcr-bert
-    - /projects/xin-data
-    - /projects/yao_temporary
+  loop: "{{ ansible_local['project_folders']['folders'] }}"
 
 - name: mount drives
   command: mount -a

@@ -12,5 +12,5 @@ project_folders = []
 for folder in folders:
     project_folders.append(f"/projects/{folder}")
 
-output = {"projects_fstab": lines, "projects_folders": project_folders}
+output = {"fstab": lines, "folders": project_folders}
 print(json.dumps(output, indent=2))

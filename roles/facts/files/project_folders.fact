@@ -1,5 +1,8 @@
 #!/bin/bash
 
-folders=$(ssh -t rhea ls -m /project-pool/projects)
+#folders=$(ssh -t rhea ls -m /project-pool/projects)
 
-python3 create_fstab.py $folders
+folders="abdomen_segmentation, cbct_reconstruction, computational-til-assessment-prognostics-2023, deepsmile-2022, direct, direct_cvpr22, direct_mrm23, direct_spie22, gan-mri, gan-mri-data, mmd-pcr, mri_seq2seq,
+mri_seq2seq_data, mtp-bcr, nki-breast-mri, rissl, tcr-bert, xin-data, yao_temporary"
+
+python3 /etc/ansible/facts.d/create_fstab.py $folders
