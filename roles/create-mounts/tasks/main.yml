@@ -2,13 +2,13 @@
   blockinfile:
     dest: /etc/fstab
     marker: "# ANSIBLE MANAGED BLOCK #"
-    content: "rhea:/project-pool/projects/cbct_reconstruction 	 /projects/cbct_reconstruction nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/computational-til-assessment-prognostics-2023 	 /projects/computational-til-assessment-prognostics-2023 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/deepsmile-2022 	 /projects/deepsmile-2022 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/direct 	 /projects/direct nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/mmd-pcr 	 /projects/mmd-pcr nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/mri_seq2seq 	 /projects/mri_seq2seq nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/nki-breast-mri 	 /projects/nki-breast-mri nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
-rhea:/project-pool/projects/rissl 	 /projects/rissl nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
- nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0"
+    content: "rhea:/project-pool/projects/cbct_reconstruction 	 /projects/cbct_reconstruction nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/computational-til-assessment-prognostics-2023 	 /projects/computational-til-assessment-prognostics-2023 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/deepsmile-2022 	 /projects/deepsmile-2022 nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/direct 	 /projects/direct nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/mmd-pcr 	 /projects/mmd-pcr nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/mri_seq2seq 	 /projects/mri_seq2seq nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/nki-breast-mri 	 /projects/nki-breast-mri nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+rhea:/project-pool/projects/rissl 	 /projects/rissl nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n
+ nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
   register: update_fstab
