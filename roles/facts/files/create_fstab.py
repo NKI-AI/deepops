@@ -4,9 +4,9 @@ import json
 args = ''.join(sys.argv[1:])
 folders = [_.strip() for _ in args.split(",") if _ != ""]
 
-lines = []
+lines = ""
 for folder in folders:
-    lines.append(f"rhea:/project-pool/projects/{folder} /projects/{folder} nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0")
+    lines += f"rhea:/project-pool/projects/{folder} /projects/{folder} nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 
 project_folders = []
 for folder in folders:
