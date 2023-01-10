@@ -22,6 +22,7 @@ plato               ansible_host=rhpc-plato
 schrodinger         ansible_host=rhpc-schrodinger
 # RTX2080Ti large node
 alanturing          ansible_host=rhpc-alanturing
+roentgen            ansible_host=rhpc-roentgen
 
 # VMs
 atlas               ansible_host=rhpc-atlas
@@ -75,6 +76,7 @@ eudoxus
 plato
 schrodinger
 alanturing
+roentgen
 
 [slurm-cluster:children]
 slurm-master
