@@ -4,6 +4,6 @@
 
 folders="abdomen_segmentation, bms-histo-classification, cbct_reconstruction, computational-til-assessment-prognostics-2023, deepsmile-2022, direct, direct_cvpr22, direct_mrm23, direct_spie22, gan-mri,
 gan-mri-data, graph-cytof, hnc-tumor-seg-jintao, mammo_oncotype, mmd-pcr, mri_seq2seq, mri_seq2seq_data, multimodal, nki-breast-mri, rissl, smart-breast-ai-registration, tcr-bert, tumor-stroma,
-xin-data, yao_temporary, radialrecon, radialrecon-data, cbct_noise2inverse, mpm_seg, mpm_generative, pam_valerio, direct_annotated_fastmri, direct_SSL, mammogram_data, perrakis_alphafold, drop, mri_adaptive_sampling, direct_ipii22, xin-asy, xin-mtpbcr, xin-aging, xin-275d"
+xin-data, yao_temporary, radialrecon, radialrecon-data, cbct_noise2inverse, mpm_seg, mpm_generative, pam_valerio, direct_annotated_fastmri, direct_SSL, mammogram_data, perrakis_alphafold, drop, mri_adaptive_sampling, direct_ipii22, xin-asy, xin-mtpbcr, xin-aging, xin-275, mmd-cls-seg"
 
 python3 /etc/ansible/facts.d/create_fstab.py $folders
