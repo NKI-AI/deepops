@@ -2,9 +2,11 @@ import json
 from pathlib import Path
 
 project_folder_names = Path("/mnt/sw/software/kosmos-cluster/project_folders.lst").read_text().split("\n")
-project_folder_names = [f for f in project_folder_names if f != "" and f[0] != "#"]
+project_folder_names = [f.strip() for f in project_folder_names if f != "" and f[0] != "#"]
 
 home_folder_names = Path("/mnt/sw/software/kosmos-cluster/home_folders.lst").read_text().split("\n")
+home_folder_names = [f.strip() for f in home_folder_names if f != "" and f[0] != "#"]
+
 
 # Fixed lines:
 fstab_lines = ""
