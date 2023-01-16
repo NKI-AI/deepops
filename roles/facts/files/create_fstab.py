@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-folders = Path("/etc/ansible/facts.d/project_folders.lst").read_text().split("\n")
+folders = Path("/mnt/sw/software/kosmos-cluster/project_folders.lst").read_text().split("\n")
 folders = [f for f in folders if f != "" and f[0] != "#"]
 
 # Fixed lines:
