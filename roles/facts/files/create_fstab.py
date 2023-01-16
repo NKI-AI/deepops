@@ -27,7 +27,7 @@ for folder in project_folder_names:
     project_folders.append(f"/projects/{folder}")
 
 # Create the list of home folders:
-for folder in project_folder_names:
+for folder in home_folder_names:
     project_folders.append(f"/network_homes/{folder}")
 
 # Get a list of project folders that have disappeared
