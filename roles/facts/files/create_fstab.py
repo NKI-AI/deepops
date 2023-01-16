@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-folders = Path("project_folders.lst").read_text().split("\n")
-folders = [f for f in folders if f[0] != "#"]
+folders = Path("/etc/ansible/facts.d/project_folders.lst").read_text().split("\n")
+folders = [f for f in folders if f != "" and f[0] != "#"]
 
 # Fixed lines:
 lines = ""

@@ -12,6 +12,7 @@ gan-mri
 gan-mri-data
 graph-cytof
 hnc-tumor-seg-jintao
+learning_wavelets
 mammo_oncotype
 mmd-pcr
 mri_seq2seq
