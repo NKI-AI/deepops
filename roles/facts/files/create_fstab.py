@@ -1,8 +1,8 @@
-import sys
 import json
+from pathlib import Path
 
-args = ''.join(sys.argv[1:])
-folders = [_.strip() for _ in args.split(",") if _ != ""]
+folders = Path("project_folders.lst").read_text().split("\n")
+folders = [f for f in folders if f[0] != "#"]
 
 # Fixed lines:
 lines = ""
@@ -15,8 +15,16 @@ for folder in folders:
 
 project_folders = ["/data/groups/aiforoncology", "/data/groups/beets-tan"]
 
+
+# Get all project folders
+to_remove = []
+for line in Path("/projects").glob("*"):
+    if line.name not in project_folders:
+        to_remove.append(line.name)
+
+
 for folder in folders:
     project_folders.append(f"/projects/{folder}")
 
-output = {"fstab": lines, "folders": project_folders}
+output = {"fstab": lines, "folders": project_folders, "removed": to_remove}
 print(json.dumps(output, indent=2))
