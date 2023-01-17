@@ -32,6 +32,15 @@ for folder in project_folder_names:
 for folder in home_folder_names:
     project_folders.append(f"/network_homes/{folder}")
 
+
+# This is to create new home directories
+for folder in home_folder_names:
+    project_folders.append(f"/home/{folder}")
+
+with open("/etc/ansible/facts.d/home_mounts.txt") as f:
+    fstab_lines += "".join(f.readlines())
+
+
 # Get a list of project folders that have disappeared
 # We can use these to remove
 # NOTE: Do not remove the home folders!
