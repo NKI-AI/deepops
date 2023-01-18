@@ -1,4 +1,4 @@
-- name: add projects to /etc/fstab
+- name: add mounts to /etc/fstab
   blockinfile:
     dest: /etc/fstab
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
