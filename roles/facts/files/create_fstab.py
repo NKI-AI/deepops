@@ -21,24 +21,17 @@ for folder in project_folder_names:
 
 # Create the fstab lines for the home folders
 for folder in home_folder_names:
-    fstab_lines += f"rhea:/project-pool/network_homes/{folder} /network_homes/{folder} nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
+    fstab_lines += f"rhea:/project-pool/network_homes/{folder} /home/{folder} nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 
 
 # Create the list of project folders:
 for folder in project_folder_names:
     project_folders.append(f"/projects/{folder}")
 
-# Create the list of home folders:
-for folder in home_folder_names:
-    project_folders.append(f"/network_homes/{folder}")
-
 
 # This is to create new home directories
 for folder in home_folder_names:
     project_folders.append(f"/home/{folder}")
-
-with open("/etc/ansible/facts.d/home_mounts.txt") as f:
-    fstab_lines += "".join(f.readlines())
 
 
 # Get a list of project folders that have disappeared
