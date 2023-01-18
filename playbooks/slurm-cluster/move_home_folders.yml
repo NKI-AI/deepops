@@ -2,7 +2,7 @@
 - hosts:  "{{ hostlist | default('slurm-login,slurm-node') }}"
   become: yes
   vars:
-    user: "l.cai"
+    user: "j.brunekreef"
   tasks:
     - name: Gather custom facts
       include_role:
