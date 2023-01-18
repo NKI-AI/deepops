@@ -1,0 +1,18 @@
+---
+- hosts:  "{{ hostlist | default('slurm-login,slurm-node') }}"
+  become: yes
+  vars:
+    user: "j.teuwen"
+  tasks:
+    - name: Gather custom facts
+      include_role:
+        name: facts
+    - name: Stop all user processes
+      shell:
+        "killall -u {{ user }} > /dev/null 2>&1 || true"
+    - name: unmount user folder
+      shell:
+        "umount /home/{{ user }}"
+    - name: mount user folder
+      shell:
+        "mount /home/{{ user }}"
