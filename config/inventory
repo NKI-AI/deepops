@@ -28,7 +28,8 @@ roentgen            ansible_host=rhpc-roentgen
 atlas               ansible_host=rhpc-atlas
 
 # Storage nodes
-#rhea                ansible_host=rhpc-rhea
+[storage]
+rhea                ansible_host=rhpc-rhea
 
 
 
@@ -83,8 +84,6 @@ slurm-master
 slurm-node
 slurm-login
 
-#[storage]
-#rhea
 
 
 ######

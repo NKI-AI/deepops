@@ -22,7 +22,7 @@
 192.168.200.114:/mnt/teuwen/teuwen-homes/i.rodriguez /home/i.rodriguez nfs rsize=524288,wsize=524288,timeo=30,intr
 192.168.200.114:/mnt/teuwen/teuwen-homes/i.vd.loo /home/i.vd.loo nfs rsize=524288,wsize=524288,timeo=30,intr
 192.168.200.114:/mnt/teuwen/teuwen-homes/i.verhoeff /home/i.verhoeff nfs rsize=524288,wsize=524288,timeo=30,intr
-192.168.200.114:/mnt/teuwen/teuwen-homes/j.brunekreef /home/j.brunekreef nfs rsize=524288,wsize=524288,timeo=30,intr
+rhea:/project-pool/network_homes/j.brunekreef /home/j.brunekreef nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
 192.168.200.114:/mnt/teuwen/teuwen-homes/j.diaz /home/j.diaz nfs rsize=524288,wsize=524288,timeo=30,intr
 192.168.200.114:/mnt/teuwen/teuwen-homes/j.ferm /home/j.ferm nfs rsize=524288,wsize=524288,timeo=30,intr
 192.168.200.114:/mnt/teuwen/teuwen-homes/j.greidanus /home/j.greidanus nfs rsize=524288,wsize=524288,timeo=30,intr
