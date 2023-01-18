@@ -7,6 +7,9 @@
     - name: Gather custom facts
       include_role:
         name: facts
+    - name: Create mount points
+      include_role:
+        name: create-mounts
     - name: Stop all user processes
       shell:
         "killall -u {{ user }} > /dev/null 2>&1 || true"
