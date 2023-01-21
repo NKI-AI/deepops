@@ -10,9 +10,10 @@ home_folder_names = [f.strip() for f in home_folder_names if f != "" and f[0] !=
 
 # Fixed lines:
 fstab_lines = ""
+fstab_lines += f"kronos:/data-pool/software /sw nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 fstab_lines += f"kronos:/data-pool/groups/aiforoncology /data/groups/aiforoncology nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 fstab_lines += f"kronos:/data-pool/groups/beets-tan /data/groups/beets-tan nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
-project_folders = ["/data/groups/aiforoncology", "/data/groups/beets-tan"]
+mountable_folders = ["/sw", "/data/groups/aiforoncology", "/data/groups/beets-tan"]
 
 
 # Create the fstab lines for the project folders:
@@ -26,12 +27,12 @@ for folder in home_folder_names:
 
 # Create the list of project folders:
 for folder in project_folder_names:
-    project_folders.append(f"/projects/{folder}")
+    mountable_folders.append(f"/projects/{folder}")
 
 
 # This is to create new home directories
 for folder in home_folder_names:
-    project_folders.append(f"/home/{folder}")
+    mountable_folders.append(f"/home/{folder}")
 
 
 # Get a list of project folders that have disappeared
@@ -39,9 +40,9 @@ for folder in home_folder_names:
 # NOTE: Do not remove the home folders!
 to_remove = []
 for line in Path("/projects").glob("*"):
-    if line.name not in [Path(_).name for _ in project_folders]:
+    if line.name not in [Path(_).name for _ in mountable_folders]:
         to_remove.append(line.name)
 
 
-output = {"fstab": fstab_lines, "folders": project_folders, "removed": to_remove}
+output = {"fstab": fstab_lines, "folders": mountable_folders, "removed": to_remove}
 print(json.dumps(output, indent=2))

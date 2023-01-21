@@ -1,3 +1,10 @@
+# This has to be done earlier because it's possible mount -a is executed by cronjob
+- name: create mounts if they don't exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop: "{{ ansible_local['project_folders']['folders'] }}"
+
 - name: add mounts to /etc/fstab
   blockinfile:
     dest: /etc/fstab
@@ -5,12 +12,6 @@
     content: |
       {{ ansible_local['project_folders']['fstab'] }}
   register: update_fstab
-
-- name: create mounts if they don't exist
-  file:
-    path: "{{ item }}"
-    state: directory
-  loop: "{{ ansible_local['project_folders']['folders'] }}"
 
 - name: mount drives
   command: mount -a
