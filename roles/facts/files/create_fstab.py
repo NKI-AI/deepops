@@ -10,7 +10,7 @@ home_folder_names = [f.strip() for f in home_folder_names if f != "" and f[0] !=
 
 # Fixed lines:
 fstab_lines = ""
-fstab_lines += f"kronos:/data-pool/software /sw nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
+fstab_lines += f"kronos:/data-pool/software /mnt/sw nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 fstab_lines += f"kronos:/data-pool/groups/aiforoncology /data/groups/aiforoncology nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 fstab_lines += f"kronos:/data-pool/groups/beets-tan /data/groups/beets-tan nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\n"
 mountable_folders = ["/sw", "/data/groups/aiforoncology", "/data/groups/beets-tan"]
