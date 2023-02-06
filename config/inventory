@@ -23,10 +23,10 @@ schrodinger         ansible_host=rhpc-schrodinger
 # RTX2080Ti large node
 alanturing          ansible_host=rhpc-alanturing
 roentgen            ansible_host=rhpc-roentgen
+hamilton          ansible_host=rhpc-hamilton
 
 # P6000 node
 mariecurie        ansible_host=rhpc-mariecurie
-hamilton          ansible_host=rhpc-hamilton
 
 # VMs
 atlas               ansible_host=rhpc-atlas
