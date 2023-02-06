@@ -24,6 +24,10 @@ schrodinger         ansible_host=rhpc-schrodinger
 alanturing          ansible_host=rhpc-alanturing
 roentgen            ansible_host=rhpc-roentgen
 
+# P6000 node
+mariecurie        ansible_host=rhpc-mariecurie
+hamilton          ansible_host=rhpc-hamilton
+
 # VMs
 atlas               ansible_host=rhpc-atlas
 
@@ -78,6 +82,8 @@ plato
 schrodinger
 alanturing
 roentgen
+mariecurie
+hamilton
 
 [slurm-cluster:children]
 slurm-master
