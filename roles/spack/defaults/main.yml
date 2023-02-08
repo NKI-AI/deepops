@@ -1,7 +1,7 @@
 ---
 spack_repo: "https://github.com/spack/spack.git"
 spack_install_dir: "/sw/spack"
-spack_version: "v0.18.1"
+spack_version: "v0.19.0"
 spack_user: "root"
 spack_group: "root"
 
@@ -13,5 +13,3 @@ spack_ubuntu_deps:
 
 spack_build_packages: false
 spack_default_packages:
-- "cuda@11.3.0"
-- "openmpi@3.1.6 +cuda +pmi"
