@@ -157,10 +157,8 @@ sm_prefix: "/sw"
 
 # Spack-specific
 spack_install_dir: "{{ sm_prefix }}/spack"
-spack_build_packages: true
+spack_build_packages: false
 spack_default_packages:
-- "cuda@11.3.0"
-- "cuda@11.6.0"
 
 
 
