@@ -20,7 +20,7 @@ eratosthenes        ansible_host=rhpc-eratosthenes
 # RTX2080Ti small nodes
 plato               ansible_host=rhpc-plato
 schrodinger         ansible_host=rhpc-schrodinger
-carlos              ansible_host=rhpc-schrodinger
+carlos              ansible_host=rhpc-carlos
 # RTX2080Ti large node
 alanturing          ansible_host=rhpc-alanturing
 roentgen            ansible_host=rhpc-roentgen
