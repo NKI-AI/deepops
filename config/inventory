@@ -16,7 +16,7 @@ ptolemaeus          ansible_host=rhpc-ptolemaeus
 eudoxus             ansible_host=rhpc-eudoxus
 euctemon            ansible_host=rhpc-euctemon
 # CPU nodes
-eratosthenes        ansible_host=rhpc-eratosthenes
+# eratosthenes        ansible_host=rhpc-eratosthenes
 # RTX2080Ti small nodes
 plato               ansible_host=rhpc-plato
 schrodinger         ansible_host=rhpc-schrodinger
@@ -69,10 +69,12 @@ rhea                ansible_host=rhpc-rhea
 atlas
 
 [slurm-login]
-eratosthenes
+# eratosthenes
+kosmos
 
 [slurm-metric]
-eratosthenes
+# eratosthenes
+kosmos
 
 [slurm-node]
 aristarchus
