@@ -22,11 +22,11 @@
     mode: "0755"
     state: "directory"
 
-- name: clone spack repository
-  git:
-    repo: "{{ spack_repo }}"
-    dest: "{{ spack_install_dir }}"
-    version: "{{ spack_version }}"
+# - name: clone spack repository
+#   git:
+#     repo: "{{ spack_repo }}"
+#     dest: "{{ spack_install_dir }}"
+#     version: "{{ spack_version }}"
 
 - name: set up spack profile scripts
   template:

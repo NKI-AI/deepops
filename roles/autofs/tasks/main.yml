@@ -6,6 +6,8 @@
   with_items:
     - autofs_mount
     - autofs_map
+    - autofs_fileserver
+    - autofs_homes_path
 
 - name: install packages
   package: name=autofs
@@ -14,6 +16,17 @@
   template:
     src: templates/master.j2
     dest: /etc/auto.master
+    owner: root
+    group: root
+    mode: 0644
+  notify: "restart autofs"
+  tags:
+    - configuration
+
+- name: configure network_homes
+  template:
+    src: templates/network_homes.j2
+    dest: /etc/auto.network_homes
     owner: root
     group: root
     mode: 0644

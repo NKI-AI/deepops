@@ -69,8 +69,10 @@ software_extra_packages:
 ################################################################################
 # AutoFS configuration
 # Playbook: authentication
-#autofs_mount: "/home"
-#autofs_map: "auto.home_linux"
+autofs_mount: "/home"
+autofs_map: "auto.network_homes"
+autofs_fileserver: "rhea"
+autofs_homes_path: "/project-pool/network_homes/"
 
 # NFS Server
 # This config will create an NFS server and share the given exports
