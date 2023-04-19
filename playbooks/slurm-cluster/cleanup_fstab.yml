@@ -1,0 +1,10 @@
+---
+- hosts:  "{{ hostlist | default('slurm-login,slurm-node') }}"
+  become: yes
+  tasks:
+    - name: cleanup ansible managed block
+      blockinfile:
+        dest: /etc/fstab
+        marker: "# {mark} ANSIBLE MANAGED BLOCK"
+        content: "kronos:/data-pool/software /sw nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nkronos:/data-pool/groups/aiforoncology /data/groups/aiforoncology nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0\nkronos:/data-pool/groups/beets-tan /data/groups/beets-tan nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0"
+      register: update_fstab

@@ -127,15 +127,11 @@ slurm_cluster_install_singularity: yes
 #  - path: /sw
 #    options: "*(rw,sync,no_root_squash)"
 
-nfs_mounts:
-  - mountpoint: /home
-    server: '{{ groups["slurm-master"][0] }}'
-    path: /home
-    options: async,vers=3
-  - mountpoint: /sw
-    server: '{{ groups["slurm-master"][0] }}'
-    path: /sw
-    options: async,vers=3
+# nfs_mounts:
+#   - mountpoint: /sw
+#     server: kronos
+#     path: /data-pool/software
+#     options: nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
 
 # Flags for enable/disable of NFS deployment
 #  - Set up an NFS server on nfs-server?
@@ -149,6 +145,18 @@ nfs_client_group: "slurm-master[1:],slurm-node"
 
 # Flags for sharing slurm.conf among compute and control nodes
 slurm_conf_symlink: true
+
+# AutoFS configuration
+# Playbook: autofs
+autofs_homes_mount: "/home"
+autofs_homes_map: "auto.network_homes"
+autofs_homes_server: "rhea"
+autofs_homes_path: "/project-pool/network_homes/"
+
+autofs_projects_mount: "/projects"
+autofs_projects_map: "auto.projects"
+autofs_projects_server: "rhea"
+autofs_projects_path: "/project-pool/projects/"
 
 ################################################################################
 # SOFTWARE MODULES (SM)                                                        #

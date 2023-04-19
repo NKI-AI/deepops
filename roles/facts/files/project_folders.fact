@@ -1,3 +1,0 @@
-#!/bin/bash
-
-python3 /etc/ansible/facts.d/create_fstab.py

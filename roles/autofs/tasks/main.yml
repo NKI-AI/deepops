@@ -4,15 +4,19 @@
     msg: "Variable '{{ item }}' is not defined"
   when: item not in vars
   with_items:
-    - autofs_mount
-    - autofs_map
-    - autofs_fileserver
+    - autofs_homes_mount
+    - autofs_projects_mount
+    - autofs_homes_map
+    - autofs_projects_map
+    - autofs_homes_server
+    - autofs_projects_server
     - autofs_homes_path
+    - autofs_projects_path
 
 - name: install packages
   package: name=autofs
 
-- name: configure /home
+- name: configure master
   template:
     src: templates/master.j2
     dest: /etc/auto.master
@@ -27,6 +31,17 @@
   template:
     src: templates/network_homes.j2
     dest: /etc/auto.network_homes
+    owner: root
+    group: root
+    mode: 0644
+  notify: "restart autofs"
+  tags:
+    - configuration
+
+- name: configure projects
+  template:
+    src: templates/projects.j2
+    dest: /etc/auto.projects
     owner: root
     group: root
     mode: 0644
