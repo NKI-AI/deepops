@@ -69,6 +69,11 @@ partition_settings:
     slurm_allow_qos: normal,rtxqos,fourgpu
     slurm_max_job_timelimit: 10080
     default: false
+  cpu:
+    slurm_def_mem_per_cpu: 1000
+    slurm_allow_qos: normal,rtxqos
+    slurm_max_job_timelimit: 30-00
+    default: false
 
 # Slurm default partition
 # slurm_partition_name: batch

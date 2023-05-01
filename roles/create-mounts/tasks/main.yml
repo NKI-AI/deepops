@@ -3,14 +3,19 @@
   file:
     path: "{{ item }}"
     state: directory
-  loop: "{{ ansible_local['project_folders']['folders'] }}"
+  loop:
+    - /sw
+    - /data/groups/aiforoncology
+    - /data/groups/beets-tan
 
 - name: add mounts to /etc/fstab
   blockinfile:
     dest: /etc/fstab
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     content: |
-      {{ ansible_local['project_folders']['fstab'] }}
+      kronos:/data-pool/software /sw nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      kronos:/data-pool/groups/aiforoncology /data/groups/aiforoncology nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
+      kronos:/data-pool/groups/beets-tan /data/groups/beets-tan nfs rsize=524288,wsize=524288,vers=3,timeo=30,intr 0 0
   register: update_fstab
 
 - name: mount drives
