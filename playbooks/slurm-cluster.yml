@@ -72,6 +72,9 @@
 - include: slurm-cluster/nhc.yml hostlist=slurm-node
   when: slurm_install_nhc|default(false)
 
+# Create software/data mounts
+- include: slurm-cluster/create_mounts.yml
+
 # Install Slurm
 - include: slurm-cluster/slurm.yml
 

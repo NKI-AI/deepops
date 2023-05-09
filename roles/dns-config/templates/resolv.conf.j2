@@ -3,6 +3,7 @@
 {% for server in dns_config_servers %}
 nameserver {{ server }}
 {% endfor %}
+options edns0 trust-ad
 {% if dns_config_search %}
 search {{ dns_config_search | join(' ') }}
 {% endif %}

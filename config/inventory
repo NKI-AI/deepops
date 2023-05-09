@@ -12,6 +12,7 @@
 # A6000 nodes
 aristarchus         ansible_host=rhpc-aristarchus
 ptolemaeus          ansible_host=rhpc-ptolemaeus
+galileo             ansible_host=rhpc-galileo
 
 # A100 nodes
 eudoxus             ansible_host=rhpc-eudoxus
@@ -89,6 +90,7 @@ kosmos
 [slurm-node]
 aristarchus
 ptolemaeus
+galileo
 carlos
 euctemon
 eudoxus
