@@ -1,0 +1,70 @@
+---
+- name: create config dir
+  file:
+    path: "{{ netdata_config_dir }}"
+    state: directory
+
+- name: create data dir
+  file:
+    path: "{{ netdata_data_dir }}"
+    state: directory
+    owner: "{{ netdata_user_id }}"
+
+- name: create cache dir
+  file:
+    path: "{{ netdata_cache_dir }}"
+    state: directory
+    owner: "{{ netdata_user_id }}"
+
+#- name: copy dashboards
+#  copy:
+#    src: "{{ item }}"
+#    dest: "{{ grafana_cfg_dashboard_path }}"
+#    owner: "{{ grafana_user_id }}"
+#  with_items:
+#    - ../../../src/dashboards/gpu-dashboard.json
+#  notify: restart grafana
+#
+#- name: install datasource config
+#  template:
+#    src: "templates/prometheus-datasource.yml.j2"
+#    dest: "{{ grafana_config_dir }}/provisioning/datasources/prometheus-datasource.yml"
+#    owner: root
+#    group: root
+#    mode: 0644
+#  notify: restart grafana
+#
+#- name: install dashboard config
+#  template:
+#    src: "templates/prometheus-dashboard.yml.j2"
+#    dest: "{{ grafana_config_dir }}/provisioning/dashboards/prometheus-dashboard.yml"
+#    owner: root
+#    group: root
+#    mode: 0644
+#  notify: restart grafana
+#
+#- name: install config file
+#  template:
+#    src: "{{ grafana_config_template }}"
+#    dest: "{{ grafana_config_dir }}/grafana.ini"
+#    owner: root
+#    group: root
+#    mode: 0644
+#  notify: restart grafana
+
+- name: install systemd unit file
+  template:
+    src: templates/docker.netdata.service.j2
+    dest: "/etc/systemd/system/{{ netdata_svc_name }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart netdata
+
+- name: configure service
+  systemd:
+    name: "{{ netdata_svc_name }}"
+    state: "{{ netdata_state }}"
+    enabled: "{{ netdata_enabled }}"
+    daemon_reload: yes
+  notify: restart grafana

@@ -1,0 +1,5 @@
+---
+- name: restart netdata
+  service:
+    name: "{{ netdata_svc_name }}"
+    state: restarted
