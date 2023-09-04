@@ -3,7 +3,7 @@
 ################################################################################
 # Slurm job scheduler configuration
 # Playbook: slurm, slurm-cluster, slurm-perf, slurm-perf-cluster, slurm-validation
-slurm_version: 21.08.8
+#slurm_version: ""
 slurm_install_prefix: /usr/local
 pmix_install_prefix: /opt/kosmos-cluster/pmix
 hwloc_install_prefix: /opt/kosmos-cluster/hwloc
@@ -19,9 +19,12 @@ slurm_db_password: AlsoReplaceWithASecurePasswordInTheVault
 slurm_max_job_timelimit: 10080
 slurm_default_job_timelimit: 60
 
+# Auto-detect GPUs using NVML
+# See docs/slurm-cluster/nvml.md for details.
+slurm_autodetect_nvml: true
+
 slurm_default_group: aifo
 slurm_organization_name: nki
-
 
 
 # Grace time for partition in seconds at preemption
@@ -116,8 +119,8 @@ slurm_configure_etc_hosts: yes
 dns_mode: none
 slurm_cluster_install_cuda: no
 slurm_cluster_install_nvidia_driver: yes  # This does not work well
-nvidia_driver_ubuntu_branch: "470"
-nvidia_driver_skip_reboot: true  # modprobe nvidia-uvm works often too
+#nvidia_driver_ubuntu_branch: "470"
+#nvidia_driver_skip_reboot: true  # modprobe nvidia-uvm works often too
 slurm_cluster_install_singularity: yes
 
 ################################################################################
@@ -208,8 +211,8 @@ hpcsdk_install_in_path: false
 # using the OpenMPI provided in the HPC SDK, but if you need a custom build,   #
 # this can help you get started.
 ################################################################################
-slurm_cluster_install_openmpi: no
-openmpi_version: 4.0.4
+slurm_cluster_install_openmpi: false
+#openmpi_version: 4.0.4
 openmpi_install_prefix: "/usr/local"
 openmpi_configure: "./configure --prefix={{ openmpi_install_prefix }} --disable-dependency-tracking --disable-getpwuid --with-pmix={{ pmix_install_prefix }} --with-hwloc={{ hwloc_install_prefix }} --with-pmi={{ slurm_install_prefix }} --with-slurm={{ slurm_install_prefix }} --with-libevent=/usr"
 
@@ -238,7 +241,7 @@ allow_user_set_gpu_clocks: no
 ################################################################################
 slurm_install_enroot: yes
 slurm_install_pyxis: yes # Not supported by slurm 22!!
-slurm_pyxis_version: 0.13.0
+#slurm_pyxis_version: 0.13.0
 
 ################################################################################
 # Node Health Check                                                            #
