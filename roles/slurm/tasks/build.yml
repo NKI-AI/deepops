@@ -68,14 +68,6 @@
   with_items: "{{ slurm_build_deps }}"
   when: ansible_distribution == 'Ubuntu'
 
-- name: install build dependencies ubuntu 20
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-  with_items: "{{ slurm_build_deps_20 }}"
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == "fossa"
-
 - name: install build dependencies
   yum:
     name: "{{ item }}"
@@ -125,7 +117,7 @@
     service:
       name: "docker.slurm-exporter.service"
       state: stopped
-    when: (ansible_distribution == 'Ubuntu') and
+    when: (ansible_distribution == 'Ubuntu') and 
       ("docker.slurm-exporter.service" in ansible_facts.services)
 
   - name: check that we have an old build dir
@@ -178,7 +170,13 @@
   command: "{{ slurm_configure }}"
   args:
     chdir: "{{ slurm_build_dir }}"
-  when: slurm_build
+  when: slurm_build and (not slurm_autodetect_nvml)
+
+- name: configure
+  command: "{{ slurm_configure_nvml }}"
+  args:
+    chdir: "{{ slurm_build_dir }}"
+  when: slurm_build and slurm_autodetect_nvml
 
 - name: build
   shell: "make -j$(nproc) > build.log 2>&1"
@@ -245,5 +243,5 @@
   service:
     name: "docker.slurm-exporter.service"
     state: restarted
-  when: (ansible_distribution == 'Ubuntu') and
+  when: (ansible_distribution == 'Ubuntu') and 
       ("docker.slurm-exporter.service" in ansible_facts.services)

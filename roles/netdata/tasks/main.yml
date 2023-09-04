@@ -67,4 +67,4 @@
     state: "{{ netdata_state }}"
     enabled: "{{ netdata_enabled }}"
     daemon_reload: yes
-  notify: restart grafana
+  notify: restart netdata

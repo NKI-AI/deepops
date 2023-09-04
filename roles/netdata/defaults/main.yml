@@ -1,9 +1,9 @@
 netdata_config_dir: /etc/netdata
-netdata_config_template: templates/grafana.ini.j2
+netdata_config_template: templates/netdata.ini.j2
 netdata_data_dir: /var/lib/netdata
 netdata_cache_dir: /var/cache/netdata
 
-netdata_user_id: 473
+netdata_user_id: 0
 netdata_container: "netdata/netdata"
 netdata_svc_name: "docker.netdata.service"
 netdata_state: started

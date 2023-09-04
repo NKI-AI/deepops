@@ -19,10 +19,9 @@
 
 - name: add cgroups to grub options
   lineinfile:
-    # Slurm does not yet support cgroups v2.
     dest: /etc/default/grub
     insertafter: '^GRUB_CMDLINE_LINUX=[^\\$]'
-    line: 'GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false cgroup_enable=memory swapaccount=1"'
+    line: 'GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} cgroup_enable=memory swapaccount=1"'
   register: update_grub
 
 - name: update grub
@@ -148,35 +147,23 @@
     enabled: yes
     daemon-reload: yes
 
-- name: install /etc/login.local.user.allowed
+- name: install /etc/localusers
   template:
-    src: etc/login.local.user.allowed
+    src: etc/localusers
     dest: "{{ item }}"
     mode: 0600
   with_items:
-    - "{{ slurm_config_dir }}/login.local.user.allowed.backup"
-    - /etc/login.local.user.allowed
+    - "{{ slurm_config_dir }}/localusers.backup"
+    - /etc/localusers
   tags:
-    - login.local.user.allowed
-
-- name: install /etc/login.local.group.allowed
-  template:
-    src: etc/login.local.group.allowed
-    dest: "{{ item }}"
-    mode: 0600
-  with_items:
-    - "{{ slurm_config_dir }}/login.local.group.allowed.backup"
-    - /etc/login.local.group.allowed
-  tags:
-    - login.local.group.allowed
+    - localusers
 
 - name: configure /etc/pam.d/sshd to restrict node access without jobs
   blockinfile:
     path: /etc/pam.d/sshd
     block: |
-      -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so action_no_jobs=ignore
-      -account sufficient pam_listfile.so item=user sense=allow file=/etc/login.local.user.allowed
-      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.local.group.allowed
+      -account sufficient {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so action_no_jobs=ignore
+      -account sufficient pam_listfile.so item=user sense=allow file=/etc/localusers
       -account required {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so
     insertafter: EOF
     marker: "# {mark} ANSIBLE MANAGED BLOCK (ansible-role-slurm)"
@@ -191,8 +178,7 @@
     path: /etc/pam.d/sshd
     block: |
       -account sufficient {{ slurm_pam_lib_dir }}/pam_slurm_adopt.so action_no_jobs=ignore
-      -account sufficient pam_listfile.so item=user sense=allow file=/etc/login.local.user.allowed
-      -account sufficient pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.local.group.allowed
+      -account sufficient pam_listfile.so item=user sense=allow file=/etc/localusers
     insertafter: EOF
     marker: "# {mark} ANSIBLE MANAGED BLOCK (ansible-role-slurm)"
   tags:

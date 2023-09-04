@@ -52,7 +52,7 @@ G_DGX_COMMON_PKGS:
   - kerneloops
   - libelf-dev
   - libltdl-dev
-#  - linux-tools-generic
+  - linux-tools-generic
   - lsof
   - lsscsi
   - m4
