@@ -2,11 +2,26 @@
 # ansible role to install vscode-server
 #
 ---
-- name: install vscode-server
+- name: Download code-server deb package
   become: yes
-  command:
-    chdir: /root
-    argv:
-      - curl -fsSL {{ vscode_download_url }} | sh
-  register: result
+  get_url:
+    url: "https://github.com/coder/code-server/releases/download/v{{ VERSION }}/code-server_{{ VERSION }}_amd64.deb"
+    dest: "/tmp/code-server_{{ vscode_version }}_amd64.deb"
+  register: download_result
+  until: download_result is succeeded
+  tags: vscode-server
+
+- name: Install code-server
+  become: yes
+  apt:
+    deb: "/tmp/code-server_{{ vscode_version }}_amd64.deb"
+  register: install_result
+  tags: vscode-server
+
+- name: Remove the downloaded deb package
+  become: yes
+  file:
+    path: "/tmp/code-server_{{ vscode_version }}_amd64.deb"
+    state: absent
+  when: install_result is changed
   tags: vscode-server
