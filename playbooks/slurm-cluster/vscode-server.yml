@@ -1,0 +1,7 @@
+---
+- hosts:  "{{ hostlist | default('all') }}"
+  become: yes
+  tasks:
+    - name: install vscode-server
+      include_role:
+        name: vscode-server
