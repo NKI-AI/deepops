@@ -5,7 +5,7 @@
 - name: Download code-server deb package
   become: yes
   get_url:
-    url: "https://github.com/coder/code-server/releases/download/v{{ VERSION }}/code-server_{{ VERSION }}_amd64.deb"
+    url: "https://github.com/coder/code-server/releases/download/v{{ vscode_version }}/code-server_{{ vscode_version }}_amd64.deb"
     dest: "/tmp/code-server_{{ vscode_version }}_amd64.deb"
   register: download_result
   until: download_result is succeeded
