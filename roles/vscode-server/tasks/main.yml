@@ -1,0 +1,12 @@
+#
+# ansible role to install vscode-server
+#
+---
+- name: install vscode-server
+  become: yes
+  command:
+    chdir: /root
+    argv:
+      - curl -fsSL {{ vscode_download_url }} | sh
+  register: result
+  tags: vscode-server
