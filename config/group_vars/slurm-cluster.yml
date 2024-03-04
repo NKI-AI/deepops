@@ -39,13 +39,13 @@ partition_settings:
   a100:
     slurm_def_mem_per_cpu: 7000
     slurm_def_cpu_per_gpu: 16
-    slurm_allow_qos: a100_qos,four_a100_qos
+    slurm_allow_qos: a100_qos,four_a100_qos,eight_a100_qos
     slurm_max_job_timelimit: 10080
     default: false
   a6000:
     slurm_def_mem_per_cpu: 7000
     slurm_def_cpu_per_gpu: 16
-    slurm_allow_qos: a6000_qos
+    slurm_allow_qos: a6000_qos,four_a6000_qos
     slurm_max_job_timelimit: 10080
     default: false
   rtx2080ti:
