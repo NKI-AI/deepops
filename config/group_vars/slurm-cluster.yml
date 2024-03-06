@@ -165,7 +165,7 @@ autofs_projects_mount: "/projects"
 autofs_projects_map: "auto.projects"
 autofs_projects_server: "rhea"
 autofs_projects_path: "/project-pool/projects/"
-
+autofs_projects_timeout: "48h"
 ################################################################################
 # SOFTWARE MODULES (SM)                                                        #
 #   May be built with Spack                                                    #

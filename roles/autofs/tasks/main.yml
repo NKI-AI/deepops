@@ -12,6 +12,7 @@
     - autofs_projects_server
     - autofs_homes_path
     - autofs_projects_path
+    - autofs_projects_timeout
 
 - name: install packages
   package: name=autofs

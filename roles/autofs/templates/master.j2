@@ -1,4 +1,4 @@
 +auto.master
 
 {{ autofs_homes_mount }} /etc/{{ autofs_homes_map }}
-{{ autofs_projects_mount }} /etc/{{ autofs_projects_map }}
+{{ autofs_projects_mount }} /etc/{{ autofs_projects_map }} --timeout={{ autofs_projects_timeout }}
